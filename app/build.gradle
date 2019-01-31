@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.shanghai.tcm"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+//    kapt {
+//        generateStubs = true
+//    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(project.file("../keystore.properties")))
+
+    signingConfigs {
+        release {
+            storeFile file(properties.STORE_FILE)
+            storePassword properties.STORE_PASSWORD
+            keyAlias properties.KEY_ALIAS
+            keyPassword properties.KEY_PASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug{
+            applicationIdSuffix '.debug'
+            minifyEnabled false
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:design:28.0.0-rc01'
+    //testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "com.github.bumptech.glide:glide:${glideLibVersion}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${glideLibVersion}"
+    implementation "de.hdodenhof:circleimageview:${circleimageviewLibVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rxjavaLibVersion}"
+    implementation "com.google.dagger:dagger:${daggerLibVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerLibVersion}"
+    implementation "com.google.dagger:dagger:${daggerLibVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerLibVersion}"
+    api "com.hwangjr.rxbus:rxbus:${rxbusLibVersion}"
+}
+
