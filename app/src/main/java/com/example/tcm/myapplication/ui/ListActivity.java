@@ -30,12 +30,12 @@ import java.util.List;
  */
 public class ListActivity extends AppCompatActivity {
 
-    private static final int[] imgs1 = {R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
+    private static final int[] imgs1 = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6};
 
-    private static final int[] imgs2 = {R.drawable.img7,R.drawable.img8,R.drawable.img9,R.drawable.img10,
+    private static final int[] imgs2 = {R.drawable.img7, R.drawable.img8, R.drawable.img9, R.drawable.img10,
             R.drawable.img11};
 
-    private int viewType;
+    private int groupPosition;
     private List<Data> datas;
     ArrayList<Data> results = new ArrayList<>();
     private ListView listView;
@@ -50,15 +50,15 @@ public class ListActivity extends AppCompatActivity {
 
     private void initView() {
         Intent intent = getIntent();
-        viewType = intent.getIntExtra("viewType", 0);
+        groupPosition = intent.getIntExtra("groupPosition", 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(viewType == 1 ? "Traditional Chinese Medicine Therapies" : "Hospital Information");
+        toolbar.setTitle(groupPosition == 0 ? "Traditional Chinese Medicine Therapies" : "Hospital Information");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.listview);
-        adapter = new ListAdapter(getData());
+        adapter = new ListAdapter(getData(), this);
         listView.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.search);
@@ -84,9 +84,9 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ListActivity.this, DetailActivity.class);
-                intent.putExtra("tab_index",viewType);
-                intent.putExtra("position",i);
-                intent.putExtra("title",((Data)adapter.getItem(i)).getText());
+                intent.putExtra("groupPosition", groupPosition);
+                intent.putExtra("childPosition", i);
+                intent.putExtra("title", ((Data) adapter.getItem(i)).getText());
                 startActivity(intent);
             }
         });
@@ -94,30 +94,30 @@ public class ListActivity extends AppCompatActivity {
         datas = getData();
     }
 
-    private List<Data> query(String result){
+    private List<Data> query(String result) {
         results.clear();
 
         String trim = result.trim();
-        if(TextUtils.isEmpty(trim)){
+        if (TextUtils.isEmpty(trim)) {
             return results;
         }
 
         int size = datas.size();
         for (int i = 0; i < size; i++) {
             Data data = datas.get(i);
-            if(data.getText().contains(result)){
+            if (data.getText().contains(result)) {
                 results.add(data);
             }
         }
         return results;
     }
 
-    private List<Data> getData(){
+    private List<Data> getData() {
         ArrayList<Data> datas = new ArrayList<>();
 
         String[] texts = null;
         int[] imgs = null;
-        if(viewType == 1){
+        if (groupPosition == 0) {
             texts = getResources().getStringArray(R.array.texts1);
             imgs = imgs1;
         } else {

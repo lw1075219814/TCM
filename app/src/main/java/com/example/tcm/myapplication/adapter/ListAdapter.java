@@ -28,15 +28,15 @@ public class ListAdapter extends BaseAdapter {
 
     private List<Data> mDatas;
     private final LayoutInflater inflater;
-    private final Context context;
+    private final Context mContext;
 
     public void setDatas(List<Data> datas){
         this.mDatas = datas;
     }
 
-    public ListAdapter(List<Data> datas){
+    public ListAdapter(List<Data> datas,Context context){
         this.mDatas = datas;
-        context = App.getContext();
+        mContext = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -61,7 +61,7 @@ public class ListAdapter extends BaseAdapter {
         ImageView image = (ImageView) contentView.findViewById(R.id.image);
         TextView text = (TextView) contentView.findViewById(R.id.text);
         Data data = mDatas.get(i);
-        Glide.with(context).load(data.getImg()).into(image);
+        Glide.with(mContext).load(data.getImg()).into(image);
         text.setText(data.getText());
         return contentView;
     }

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.MainActivity"
-    tools:showIn="@layout/activity_main"
     android:background="#F2F4F7"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".mvp.main.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:clickable="false"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <!--<android.support.design.widget.TabLayout-->
+        <!--<android.support.design.widget.TabLayout-->
         <!--android:id="@+id/tl_tab"-->
         <!--android:visibility="gone"-->
         <!--android:layout_width="match_parent"-->
@@ -26,170 +33,165 @@
         <!--app:tabSelectedTextColor="@color/colorPrimaryDark"-->
         <!--app:tabTextColor="@color/colorPrimary" />-->
 
-    <!--<ListView-->
+        <!--<ListView-->
         <!--android:visibility="gone"-->
         <!--android:id="@+id/listview"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
 
-    <!--<android.support.v4.view.ViewPager-->
+        <!--<android.support.v4.view.ViewPager-->
         <!--android:id="@+id/vp_pager"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent" />-->
 
-    <RelativeLayout
-        android:paddingTop="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:background="#ffffff"
-    android:id="@+id/rl_therapy"
-    android:layout_marginTop="7dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <View
-        android:layout_centerVertical="true"
-        android:layout_width="2dp"
-        android:layout_height="15dp"
-        android:background="#0275E6"/>
-
-    <TextView
-        android:layout_marginLeft="14dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        android:text="Traditional Chinese Medicine Therapies"
-        />
-
-    <LinearLayout
-        android:id="@+id/more_view1"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="17dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/rl_therapy"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="all"
-            android:textColor="#a3adce"
-            android:textSize="12sp" />
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:background="#ffffff"
+            android:paddingTop="7dp">
 
-        <ImageView
-            android:id="@+id/tv_more1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/icon_more"/>
-
-    </LinearLayout>
-</RelativeLayout>
-
-    <com.example.tcm.myapplication.view.CustomGridView
-        android:background="#ffffff"
-        android:id="@+id/grid_view1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp"
-        android:numColumns="3"
-        android:scrollbars="none"
-        />
-
-    <RelativeLayout
-        android:paddingTop="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:background="#ffffff"
-        android:id="@+id/rl_hospital"
-        android:layout_marginTop="7dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <View
-            android:layout_centerVertical="true"
-            android:layout_width="2dp"
-            android:layout_height="15dp"
-            android:background="#0275E6"/>
-
-        <TextView
-            android:layout_marginLeft="14dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:text="Hospital Information"
-            />
-
-        <LinearLayout
-            android:id="@+id/more_view2"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="17dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_centerVertical="true">
+            <View
+                android:layout_width="2dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:background="#0275E6" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="all"
-                android:textColor="#a3adce"
-                android:textSize="12sp" />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:text="Traditional Chinese Medicine Therapies"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/tv_more"
+            <LinearLayout
+                android:id="@+id/more_view1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_more"/>
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="17dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        </LinearLayout>
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="all"
+                    android:textColor="#a3adce"
+                    android:textSize="12sp" />
 
-    <com.example.tcm.myapplication.view.CustomGridView
-        android:background="#ffffff"
-        android:id="@+id/grid_view2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp"
-        android:numColumns="3"
-        android:scrollbars="none"
-        />
+                <ImageView
+                    android:id="@+id/tv_more1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_more" />
 
-    <RelativeLayout
-        android:visibility="gone"
-        android:paddingTop="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:background="#ffffff"
-        android:id="@+id/rl_appointment"
-        android:layout_marginTop="7dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            </LinearLayout>
+        </RelativeLayout>
 
-        <View
-            android:layout_centerVertical="true"
-            android:layout_width="2dp"
-            android:layout_height="15dp"
-            android:background="#0275E6"/>
-
-        <TextView
-            android:layout_marginLeft="14dp"
-            android:layout_width="wrap_content"
+        <com.example.tcm.myapplication.widget.CustomGridView
+            android:id="@+id/grid_view1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:textColor="#000000"
-            android:text="陪诊预约"
-            />
+            android:background="#ffffff"
+            android:numColumns="3"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:scrollbars="none" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:background="#ffffff"
+            android:paddingTop="7dp">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:background="#0275E6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="Hospital Information"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/more_view2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="17dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="all"
+                    android:textColor="#a3adce"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/tv_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_more" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.example.tcm.myapplication.widget.CustomGridView
+            android:id="@+id/grid_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:numColumns="3"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:scrollbars="none" />
+
+        <RelativeLayout
+            android:id="@+id/rl_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:background="#ffffff"
+            android:paddingTop="7dp"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:background="#0275E6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:text="陪诊预约"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

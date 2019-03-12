@@ -15,6 +15,15 @@ public class Data {
     private int img;
     private String text;
 
+    public Data() {
+    }
+
+    public Data(int id, int img, String text) {
+        this.id = id;
+        this.img = img;
+        this.text = text;
+    }
+
     public int getId() {
         return id;
     }

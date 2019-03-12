@@ -1,0 +1,13 @@
+/build
+*.iml
+
+# Built application files
+*.apk
+*.ap_
+
+# Keystore files
+# Uncomment the following line if you do not want to check your keystore files in.
+*.jks
+*.keystore
+
+.DS_Store

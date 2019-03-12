@@ -35,7 +35,6 @@ public class GridAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final int mViewType;
-    private final Resources resources;
     private final List<Data> datas;
     private final LayoutInflater inflater;
 
@@ -46,7 +45,6 @@ public class GridAdapter extends BaseAdapter {
     public GridAdapter(Context context, int viewType) {
         mContext = context;
         mViewType = viewType;
-        resources = context.getResources();
         inflater = LayoutInflater.from(context);
 
         datas = getData();
@@ -86,7 +84,7 @@ public class GridAdapter extends BaseAdapter {
 
     private List<Data> getData(){
         ArrayList<Data> datas = new ArrayList<>();
-        Resources mResources = App.getContext().getResources();
+        Resources mResources = mContext.getResources();
         String[] texts = null;
 
         if(mViewType == 1){

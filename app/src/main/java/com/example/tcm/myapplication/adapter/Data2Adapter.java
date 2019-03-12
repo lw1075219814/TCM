@@ -1,5 +1,6 @@
 package com.example.tcm.myapplication.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +28,9 @@ public class Data2Adapter extends BaseAdapter {
     private final List<Data2> mData;
     private final LayoutInflater inflater;
 
-    public Data2Adapter(String key) {
+    public Data2Adapter(String key, Context context) {
         mData = (List<Data2>) MapUtil.getMap().get(key);
-        inflater = LayoutInflater.from(App.getContext());
+        inflater = LayoutInflater.from(context);
     }
 
     @Override

@@ -32,14 +32,14 @@ import java.util.List;
  */
 public class DetailActivity extends AppCompatActivity {
 
-    private static final int[] imgs1 = {R.drawable.img1,R.drawable.img2,R.drawable.img3,
-            R.drawable.img4,R.drawable.img5,R.drawable.img6};
+    private static final int[] imgs1 = {R.drawable.img1, R.drawable.img2, R.drawable.img3,
+            R.drawable.img4, R.drawable.img5, R.drawable.img6};
 
-    private static final int[] imgs2 = {R.drawable.img7,R.drawable.img8,R.drawable.img9,R.drawable.img10,
+    private static final int[] imgs2 = {R.drawable.img7, R.drawable.img8, R.drawable.img9, R.drawable.img10,
             R.drawable.img11};
 
-    private int tab_index;
-    private int position;
+    private int groupPosition;
+    private int childPosition;
     private String title;
     private List<String> tab1Detail;
     private int[] imgs;
@@ -50,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
 
         getData();
 
-        if(tab_index == 1){
+        if (groupPosition == 0) {
             setContentView(R.layout.activity_detail);
             initView1();
         } else {
@@ -59,13 +59,13 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    private void getData(){
+    private void getData() {
         Intent intent = getIntent();
-        tab_index = intent.getIntExtra("tab_index", 0);
-        position = intent.getIntExtra("position", 0);
+        groupPosition = intent.getIntExtra("groupPosition", 0);
+        childPosition = intent.getIntExtra("childPosition", 0);
         title = intent.getStringExtra("title");
 
-        if(tab_index == 1){
+        if (groupPosition == 0) {
             tab1Detail = MapUtil.getDetail1();
             imgs = imgs1;
         } else {
@@ -76,27 +76,27 @@ public class DetailActivity extends AppCompatActivity {
     private void initView1() {
         setupView();
         TextView textView = findViewById(R.id.text);
-        textView.setText(tab1Detail.get(position));
+        textView.setText(tab1Detail.get(childPosition));
     }
 
-    private void initView2(){
+    private void initView2() {
         setupView();
         ListView listView = findViewById(R.id.listview);
-        Data2Adapter data2Adapter = new Data2Adapter(title);
+        Data2Adapter data2Adapter = new Data2Adapter(title, this);
         setupHeader(listView);
         listView.setAdapter(data2Adapter);
     }
 
-    private void setupHeader(ListView listView){
-        View headerView = LayoutInflater.from(this).inflate(R.layout.list_header,null);
+    private void setupHeader(ListView listView) {
+        View headerView = LayoutInflater.from(this).inflate(R.layout.list_header, null);
         TextView header = headerView.findViewById(R.id.header);
         ImageView img = headerView.findViewById(R.id.img);
-        Glide.with(App.getContext()).load(imgs[position]).into(img);
+        Glide.with(getBaseContext()).load(imgs[childPosition]).into(img);
         header.setText(MapUtil.getHeaders().get(title).toString());
         listView.addHeaderView(headerView);
     }
 
-    private void setupView(){
+    private void setupView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -104,9 +104,9 @@ public class DetailActivity extends AppCompatActivity {
         TextView titleView = findViewById(R.id.title);
         titleView.setText(title);
 
-        if(tab_index == 1){
+        if (groupPosition == 0) {
             ImageView img = findViewById(R.id.img);
-            Glide.with(App.getContext()).load(imgs[position]).into(img);
+            Glide.with(getBaseContext()).load(imgs[childPosition]).into(img);
         }
     }
 

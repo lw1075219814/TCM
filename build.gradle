@@ -1,14 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from:"config.gradle"
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
+        //maven { url "https://jitpack.io" }
+        repositories.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
-        //dagger2
-        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        //butterknife
+        //classpath 'com.jakewharton:butterknife-gradle-plugin:10.0.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,19 +19,13 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
+        //maven { url "https://jitpack.io" }
+        //repositories.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-ext{
-    glideLibVersion='4.8.0'
-    circleimageviewLibVersion='2.2.0'
-    rxjavaLibVersion='2.2.3'
-    daggerLibVersion='2.11'
-    rxbusLibVersion='1.0.6'
 }

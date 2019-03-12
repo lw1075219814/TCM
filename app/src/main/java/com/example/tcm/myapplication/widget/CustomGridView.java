@@ -1,4 +1,4 @@
-package com.example.tcm.myapplication.view;
+package com.example.tcm.myapplication.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
