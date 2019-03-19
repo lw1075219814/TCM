@@ -11,8 +11,8 @@ package com.example.tcm.myapplication.base;
  */
 public interface BaseView {
     void showLoading();
-    void hideLoading();
+    void dismissLoading();
     void setNightMode(boolean isNight);
     void showSuccess(String data);
-    void showError(Throwable throwable);
+    void showErrorMsg(String msg);
 }

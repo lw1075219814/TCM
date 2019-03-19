@@ -1,16 +1,11 @@
 package com.example.tcm.myapplication.injection.module;
 
-import android.content.Context;
-
 import com.example.tcm.myapplication.App;
-import com.example.tcm.myapplication.impl.IDB;
-import com.example.tcm.myapplication.impl.IHttp;
 import com.example.tcm.myapplication.model.DataManager;
 import com.example.tcm.myapplication.model.db.GreenDaoHelper;
 import com.example.tcm.myapplication.model.http.RetrofitHelper;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -44,14 +39,14 @@ public class AppModule {
         return new DataManager(retrofitHelper, greenDaoHelper);
     }
 
-    @Provides
-    IHttp provideRetrofitHelper(IHttp iHttp) {
-        return iHttp;
-    }
-
-    @Provides
-    IDB provideGreenDaoHelper(IDB idb) {
-        return idb;
-    }
+//    @Provides
+//    HttpHelper provideRetrofitHelper(HttpHelper iHttp) {
+//        return iHttp;
+//    }
+//
+//    @Provides
+//    DBHelper provideGreenDaoHelper(DBHelper idb) {
+//        return idb;
+//    }
 
 }

@@ -312,5 +312,11 @@ The offers treatment service to a wide range of diseases, including internal med
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="drawer_group_content">资讯</string>
+    <string name="drawer_group_option">选项</string>
+    <string name="drawer_zhihu">知乎</string>
+    <string name="drawer_collection">收藏</string>
+    <string name="drawer_setting">设置</string>
+    <string name="drawer_about">关于</string>
 
 </resources>

@@ -12,12 +12,17 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         //65k方法分包
-        //multiDexEnabled true
+        multiDexEnabled true
     }
 
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 
     Properties properties = new Properties()
@@ -48,12 +53,6 @@ android {
     }
 }
 
-//gradle.projectsEvaluated {
-//    tasks.withType(JavaCompile) {
-//        options.compilerArgs << "-Xmaxerrs" << "500" // or whatever number you want
-//    }
-//}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -73,16 +72,25 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies['daggerCompiler']
     annotationProcessor rootProject.ext.dependencies['daggerAndroidProcessor']
     implementation rootProject.ext.dependencies['guava']
-    //    implementation rootProject.ext.dependencies['butterknife']
-    //    implementation rootProject.ext.dependencies['butterknifeProcessor']
     implementation rootProject.ext.dependencies['loadingView']
     implementation rootProject.ext.dependencies['cardView']
     implementation rootProject.ext.dependencies['retrofit']
-    implementation rootProject.ext.dependencies['retrofit-converter-gson']
-    implementation rootProject.ext.dependencies['retrofit-adapter-rxjava2']
+    implementation rootProject.ext.dependencies['retrofitConverterGson']
+    implementation rootProject.ext.dependencies['retrofitAdapterRxjava2']
     implementation rootProject.ext.dependencies['okhttp']
-    implementation rootProject.ext.dependencies['okhttp-logging-interceptor']
+    implementation rootProject.ext.dependencies['okhttpLoggingInterceptor']
     implementation rootProject.ext.dependencies['gson']
-    //implementation rootProject.ext.dependencies['leakcanary-android']
-    //implementation rootProject.ext.dependencies['leakcanary-android-no-op']
+    //implementation rootProject.ext.dependencies['leakcanaryAndroid']
+    //implementation rootProject.ext.dependencies['leakcanaryAndroidNoOp']
+    implementation rootProject.ext.dependencies['bugly']
+    implementation rootProject.ext.dependencies['logger']
+    //implementation rootProject.ext.dependencies['recyclerview']
+    //implementation rootProject.ext.dependencies['recyclerview1']
+    implementation 'com.jude:easyrecyclerview:4.4.2'
+
+    //implementation rootProject.ext.dependencies['butterknife']
+    //implementation('com.jakewharton:butterknife:10.1.0') {
+        //exclude module: 'annotation'
+    //}
+    //annotationProcessor rootProject.ext.dependencies['butterknifeProcessor']
 }

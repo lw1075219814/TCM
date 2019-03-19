@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.adapter.Data2Adapter;
+import com.example.tcm.myapplication.base.Constants;
 import com.example.tcm.myapplication.util.MapUtil;
 import com.example.tcm.myapplication.R;
 
@@ -61,9 +62,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getData() {
         Intent intent = getIntent();
-        groupPosition = intent.getIntExtra("groupPosition", 0);
-        childPosition = intent.getIntExtra("childPosition", 0);
-        title = intent.getStringExtra("title");
+        groupPosition = intent.getIntExtra(Constants.GROUPPOSITION, 0);
+        childPosition = intent.getIntExtra(Constants.CHILDPOSITION, 0);
+        title = intent.getStringExtra(Constants.TITLE);
 
         if (groupPosition == 0) {
             tab1Detail = MapUtil.getDetail1();

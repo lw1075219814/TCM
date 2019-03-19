@@ -1,6 +1,7 @@
 package com.example.tcm.myapplication.entity;
 
-import android.util.Log;
+
+import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
@@ -22,7 +23,7 @@ public class User {
     //构造方法添加注解
     @Inject
     public User(){
-        Log.e(TAG,"init");
+        Logger.e(TAG,"init");
     }
 
     public String getName() {

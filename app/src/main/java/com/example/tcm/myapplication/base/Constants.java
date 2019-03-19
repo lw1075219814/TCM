@@ -29,7 +29,17 @@ public class Constants {
     public static final String PATH_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath()
             + File.separator + "codeest" + File.separator + "GeekNews";
 
-    public static final String FILE_PROVIDER_AUTHORITY="com.shanghai.tcm.fileprovider";
+    public static final String FILE_PROVIDER_AUTHORITY = "com.shanghai.tcm.fileprovider";
+
+    /**
+     * 日志标识
+     */
+    public static final String LOG_TAG = "log";
+
+    /**
+     * bugly app id
+     */
+    public static final String BUGLY_APP_ID = "e63eb81dd6";
 
     /**
      * 首页分栏标题
@@ -66,4 +76,24 @@ public class Constants {
      * 首页医院类型
      */
     public static final int GROUP_TYPE_HOSPITAL = 1;
+
+    /**
+     * 首页标题子布局下标
+     */
+    public static final String GROUPPOSITION = "groupPosition";
+
+    /**
+     * 首页recylerView子布局下标
+     */
+    public static final String CHILDPOSITION = "childPosition";
+
+    /**
+     * 首页recylerView子布局内容
+     */
+    public static final String TITLE = "title";
+
+    /**
+     * 每天最新item Id
+     */
+    public static final String LATESTDAILYID = "LatestDailyId";
 }

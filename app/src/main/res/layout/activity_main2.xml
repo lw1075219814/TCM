@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <android.support.v7.widget.Toolbar
+            android:visibility="gone"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="@android:color/white" />
+
+        <FrameLayout
+            android:id="@+id/fl_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="@dimen/main_navigation_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/drawer_item_n"
+            app:itemBackground="@drawable/drawer_item_bg"
+            app:menu="@menu/menu_main_drawer" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -5,10 +5,8 @@ import android.view.KeyEvent;
 
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.base.BaseActivity;
-import com.example.tcm.myapplication.model.DataManager;
-import com.example.tcm.myapplication.ui.module.TestActivity;
-
-import javax.inject.Inject;
+import com.example.tcm.myapplication.ui.module.LatestDailyListActivity;
+import com.example.tcm.myapplication.util.IntentUtil;
 
 /**
  * @author liuwen
@@ -38,22 +36,12 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     @Override
     public void toMain() {
-//        Intent intent = new Intent(this, MainActivity.class);
-        Intent intent = new Intent(this, TestActivity.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
-    }
-
-    private void toTest() {
-        startActivity(new Intent(this, TestActivity.class));
-        finish();
+        IntentUtil.toMain(SplashActivity.this);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //toMain();
             return true;
         }
         return super.onKeyDown(keyCode, event);

@@ -228,7 +228,7 @@ public class MapUtil {
                 "Hundreds of clinical studies on the benefits of acupuncture show that it successfully" +
                 " treats conditions ranging from musculoskeletal problems (back pain, neck pain, and others) to nausea, migraine headache, anxiety, depression, insomnia, and infertility. ");
 
-        list.add("Moxibustion is a form of heat therapy in which dried plant materials called \"moxa\" are burned on or very near the surface of the skin. The intention is to warm and invigorate the flow of qi in the body and dispel certain pathogenic influences. Moxa is usually made from the dried leafy material of Chinese mugwort (Artemesia argyi or A.vlugaris), but it can be made of other substances as well. \n\n" +
+        list.add("Moxibustion is a form of heat therapy in which dried plant materials called \"moxa\" are burned on or very near the surface of the skin. The intention is to warm and invigorate the flow of qi in the body and dispel certain pathogenic influences. Moxa is usually made from the dried leafy material of Chinese mugwort (Artemesia argyi or ApiException.vlugaris), but it can be made of other substances as well. \n\n" +
                 "There are several methods of moxibustion. Three of them are direct scarring, direct non-scarring, and indirect moxibustion. Direct scarring moxibustion places a small cone of moxa" +
                 "on the skin at an acupuncture point and burns it until the skin blisters, which then scars after it heals. Direct non-scarring moxibustion removes the burning moxa" +
                 "before the skin burns enough to scar, unless the burning moxa is left on the skin too long. Indirect moxibustion holds a cigar made of moxa near the acupuncture point" +
@@ -245,11 +245,11 @@ public class MapUtil {
 
         list.add("Gua sha is a natural, alternative therapy that involves scraping your skin with a massage tool to improve your circulation. This ancient Chinese healing technique may" +
                 "offer a unique approach to better health, addressing issues like chronic pain. \n\n" +
-                "A technician scrapes your skin with short or long strokes to stimulate microcirculation of the soft tissue, which increases blood flow. They make these strokes with a smooth-edged" +
+                "ApiException technician scrapes your skin with short or long strokes to stimulate microcirculation of the soft tissue, which increases blood flow. They make these strokes with a smooth-edged" +
                 "instrument known as a gua massage tool. The technician applies massage oil to your skin, and then uses the tool to repeatedly scrape your skin in a downward motion. \n\n" +
                 "Gua sha is intended to address stagnant energy, called qi, in the body that practitioners believe may be responsible for inflammation. Inflammation is the underlying cause of" +
                 "several conditions associated with chronic pain. Rubbing the skin’s surface is thought to help break up this energy, reduce inflammation, and promote healing. \n\n" +
-                "Gua sha is generally performed on a person’s back, buttocks, neck, arms, and legs. A gentle version of it is even used on the face as a facial technique. Your technician may apply" +
+                "Gua sha is generally performed on a person’s back, buttocks, neck, arms, and legs. ApiException gentle version of it is even used on the face as a facial technique. Your technician may apply" +
                 "mild pressure, and gradually increase intensity to determine how much force you can handle. \n\n" +
                 "Gua sha is most often used to relieve muscle and joint pain. Conditions of the muscles and bones are known as musculoskeletal disorders. Some examples include back pain, tendon" +
                 "strain, and carpal tunnel syndrome.Practitioners claim that gua sha can also benefit the immune system and reduce inflammation. Sometimes, gua sha is used to treat a" +
@@ -270,7 +270,7 @@ public class MapUtil {
                 "The most valuable benefit of an herbal consultation is the carefully blended combination of herbs specifically designed to address each person’s unique set of needs. You can" +
                 "benefit if you are: \n\n" +
                 "● Looking for greater balance and harmony \n\n" +
-                "● A person with an acute or chronic condition such as allergies, asthma, migraines, IBS and insomnia \n\n" +
+                "● ApiException person with an acute or chronic condition such as allergies, asthma, migraines, IBS and insomnia \n\n" +
                 "● Someone with emotional challenges such as anxiety, stress, fear, addictions, anger, grief, or depression \n\n" +
                 "● Looking for caring and compassionate practitioners who listen \n\n" +
                 "● Ready for an alternative, yet proven solution to health issues. \n");

@@ -4,11 +4,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.tcm.myapplication.App;
+import com.example.tcm.myapplication.R;
 
 /**
  * @author liuwen

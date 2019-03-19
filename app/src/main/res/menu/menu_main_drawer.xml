@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/drawer_group_content">
+        <menu>
+            <item
+                android:id="@+id/zhihu"
+                android:checked="true"
+                android:icon="@drawable/ic_drawer_zhihu"
+                android:title="@string/drawer_zhihu"></item>
+        </menu>
+    </item>
+    <item android:title="@string/drawer_group_option">
+        <menu>
+            <item
+                android:id="@+id/collection"
+                android:checked="false"
+                android:icon="@drawable/ic_drawer_collection"
+                android:title="@string/drawer_collection" />
+            <item
+                android:id="@+id/setting"
+                android:checked="false"
+                android:icon="@drawable/ic_drawer_setting"
+                android:title="@string/drawer_setting" />
+            <item
+                android:id="@+id/about"
+                android:checked="false"
+                android:icon="@drawable/ic_drawer_about"
+                android:title="@string/drawer_about" />
+        </menu>
+    </item>
+</menu>

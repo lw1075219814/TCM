@@ -6,4 +6,6 @@
 
     <color name="mainBackground">#EEEEEE</color>
     <color name="toast_bg">#dddfe0</color>
+    <color name="drawer_item_p">#e8e8e8</color>
+    <color name="drawer_item_n">#fffff9</color>
 </resources>

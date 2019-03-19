@@ -2,12 +2,11 @@ package com.example.tcm.myapplication.injection.module;
 
 import com.example.tcm.myapplication.BuildConfig;
 import com.example.tcm.myapplication.base.Constants;
-import com.example.tcm.myapplication.model.Apis;
-import com.example.tcm.myapplication.model.CacheInterceptor;
+import com.example.tcm.myapplication.model.http.api.ZhiHuApis;
+import com.example.tcm.myapplication.model.http.interceptor.CacheInterceptor;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -36,20 +35,25 @@ public class HttpModule {
     }
 
     @Provides
-    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client, String url) {
-        return createRetrofit(builder, client, url);
+    OkHttpClient.Builder provideOkHttpBuilder() {
+        return new OkHttpClient.Builder();
     }
 
     @Provides
-    Apis provideService(Retrofit retrofit){
-        return retrofit.create(Apis.class);
+    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, ZhiHuApis.HOST);
+    }
+
+    @Provides
+    ZhiHuApis provideService(Retrofit retrofit) {
+        return retrofit.create(ZhiHuApis.class);
     }
 
     @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder) {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
             builder.addInterceptor(loggingInterceptor);
         }
         File cacheFile = new File(Constants.PATH_CACHE);

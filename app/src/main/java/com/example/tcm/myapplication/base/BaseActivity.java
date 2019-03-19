@@ -1,12 +1,15 @@
 package com.example.tcm.myapplication.base;
 
 import android.app.ProgressDialog;
+import android.os.Looper;
 import android.support.v7.app.AppCompatDelegate;
+import android.widget.Toast;
 
 import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.injection.component.ActivityComponent;
 import com.example.tcm.myapplication.injection.component.DaggerActivityComponent;
 import com.example.tcm.myapplication.injection.module.ActivityModule;
+import com.example.tcm.myapplication.util.ToastUtil;
 
 import javax.inject.Inject;
 
@@ -68,7 +71,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     }
 
     @Override
-    public void hideLoading() {
+    public void dismissLoading() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
@@ -87,8 +90,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     }
 
     @Override
-    public void showError(Throwable throwable) {
-
+    public void showErrorMsg(String msg) {
+        ToastUtil.shortShow(msg);
     }
 
     protected abstract void initInject();

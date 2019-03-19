@@ -84,7 +84,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             @Override
             public void onClick(View v) {
                 if (indexClickListener != null) {
-                    indexClickListener.setGroupClickListener(i);
+                    indexClickListener.setGroupClick(i);
                 }
             }
         });
@@ -134,7 +134,7 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     if (indexClickListener != null) {
-                        indexClickListener.setChildClickListener(groupPosition, i);
+                        indexClickListener.setChildClick(groupPosition, i);
                     }
                 }
             });
@@ -187,9 +187,9 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public interface OnIndexClickListener {
-        void setGroupClickListener(int groupPosition);
+        void setGroupClick(int groupPosition);
 
-        void setChildClickListener(int groupPosition, int childPosition);
+        void setChildClick(int groupPosition, int childPosition);
     }
 
 }

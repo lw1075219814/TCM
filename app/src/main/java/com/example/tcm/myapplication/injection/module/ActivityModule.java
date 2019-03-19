@@ -1,12 +1,10 @@
 package com.example.tcm.myapplication.injection.module;
 
 import android.app.Activity;
-import android.content.Context;
 
-import com.example.tcm.dagger2.bean.Man;
+import com.example.tcm.dagger2.demo.bean.Man;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

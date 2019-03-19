@@ -1,9 +1,8 @@
 package com.example.tcm.myapplication.mvp.main;
 
-import com.example.tcm.myapplication.base.RxPresenter;
+import com.example.tcm.myapplication.base.BaseRxPresenter;
 import com.example.tcm.myapplication.model.DataManager;
-import com.example.tcm.myapplication.mvp.main.SplashContract;
-import com.example.tcm.myapplication.util.RxUtil;
+import com.example.tcm.myapplication.util.RxSchedulersUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +20,7 @@ import io.reactivex.functions.Consumer;
  * @Update.Date 2019/2/2 14:01
  * @see
  */
-public class SplashPresenter extends RxPresenter<SplashContract.View> implements SplashContract.Presenter {
+public class SplashPresenter extends BaseRxPresenter<SplashContract.View> implements SplashContract.Presenter {
 
     /**
      * 延迟时间
@@ -38,7 +37,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
     @Override
     public void startTimer() {
         addSubscribe(Flowable.timer(DELAY_TIME, TimeUnit.MILLISECONDS)
-                .compose(RxUtil.<Long>rxSchedulers())
+                .compose(RxSchedulersUtil.<Long>rxSchedulers())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
@@ -51,5 +50,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                     }
                 }));
     }
+
+
 
 }

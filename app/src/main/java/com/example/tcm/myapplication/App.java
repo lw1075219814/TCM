@@ -10,6 +10,7 @@ import com.example.tcm.myapplication.injection.component.AppComponent;
 import com.example.tcm.myapplication.injection.component.DaggerAppComponent;
 import com.example.tcm.myapplication.injection.module.AppModule;
 import com.example.tcm.myapplication.injection.module.HttpModule;
+import com.example.tcm.myapplication.service.InitService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +38,8 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         getScreenSize();
+
+        InitService.start(this);
     }
 
     public static synchronized App getInstance() {

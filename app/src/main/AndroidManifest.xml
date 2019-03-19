@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tcm.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,13 +11,23 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:appComponentFactory="appComponentFactory"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:appComponentFactory">
         <activity
             android:name=".mvp.main.SplashActivity"
             android:label="@string/app_name"
@@ -41,15 +52,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.module.TestActivity"
+            android:name=".ui.module.LatestDailyListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".mvp.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".ui.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:name=".mvp.main.Main2Activity"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".service.InitService" />
     </application>
 
 </manifest>

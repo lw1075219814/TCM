@@ -18,6 +18,7 @@ import com.example.tcm.myapplication.base.Constants;
 import com.example.tcm.myapplication.ui.DetailActivity;
 import com.example.tcm.myapplication.ui.ListActivity;
 import com.example.tcm.myapplication.R;
+import com.example.tcm.myapplication.util.IntentUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.setIndexClickListener(new IndexAdapter.OnIndexClickListener() {
             @Override
-            public void setGroupClickListener(int groupPosition) {
-                toListPage(groupPosition);
+            public void setGroupClick(int groupPosition) {
+                IntentUtil.toList(MainActivity.this, groupPosition);
             }
 
             @Override
-            public void setChildClickListener(int groupPosition, int childPosition) {
-                toDetailPage(groupPosition, childPosition);
+            public void setChildClick(int groupPosition, int childPosition) {
+                String text = adapter.getContents().get(groupPosition).get(childPosition).getText();
+                IntentUtil.toDetail(MainActivity.this, groupPosition, childPosition, text);
             }
         });
 
@@ -117,31 +119,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return false;
         }
-    }
-
-    /**
-     * 跳转到列表页面
-     *
-     * @param groupPosition
-     */
-    private void toListPage(int groupPosition) {
-        Intent groupIntent = new Intent(MainActivity.this, ListActivity.class);
-        groupIntent.putExtra("groupPosition", groupPosition);
-        startActivity(groupIntent);
-    }
-
-    /**
-     * 跳转到详情页面
-     *
-     * @param groupPosition
-     * @param childPosition
-     */
-    private void toDetailPage(int groupPosition, int childPosition) {
-        Intent childIntent = new Intent(MainActivity.this, DetailActivity.class);
-        childIntent.putExtra("groupPosition", groupPosition);
-        childIntent.putExtra("childPosition", childPosition);
-        childIntent.putExtra("title", adapter.getContents().get(groupPosition).get(childPosition).getText());
-        startActivity(childIntent);
     }
 
     @Override

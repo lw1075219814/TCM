@@ -1,6 +1,6 @@
 package com.example.tcm.myapplication.model.db;
 
-import com.example.tcm.myapplication.impl.IDB;
+import com.example.tcm.myapplication.impl.DBHelper;
 
 import javax.inject.Inject;
 
@@ -13,15 +13,11 @@ import javax.inject.Inject;
  * @Update.Date 2019/3/12 11:07
  * @see
  */
-public class GreenDaoHelper implements IDB {
+public class GreenDaoHelper implements DBHelper {
 
     @Inject
     public GreenDaoHelper() {
 
     }
 
-    @Override
-    public String getUserInfo() {
-        return "hello wrold";
-    }
 }

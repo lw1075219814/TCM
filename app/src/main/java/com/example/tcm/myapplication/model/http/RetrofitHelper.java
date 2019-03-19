@@ -1,12 +1,13 @@
 package com.example.tcm.myapplication.model.http;
 
-import android.util.Log;
-
-import com.example.tcm.myapplication.impl.IHttp;
+import com.example.tcm.myapplication.entity.LatestDailyDetailBean;
+import com.example.tcm.myapplication.entity.LatestDailyListBean;
+import com.example.tcm.myapplication.impl.HttpHelper;
+import com.example.tcm.myapplication.model.http.api.ZhiHuApis;
 
 import javax.inject.Inject;
 
-import static android.support.constraint.Constraints.TAG;
+import io.reactivex.Flowable;
 
 /**
  * @author liuwen
@@ -17,15 +18,22 @@ import static android.support.constraint.Constraints.TAG;
  * @Update.Date 2019/3/12 11:07
  * @see
  */
-public class RetrofitHelper implements IHttp {
+public class RetrofitHelper implements HttpHelper {
+
+    private final ZhiHuApis mZhiHuApis;
 
     @Inject
-    public RetrofitHelper(){
-
+    public RetrofitHelper(ZhiHuApis zhiHuApis) {
+        mZhiHuApis = zhiHuApis;
     }
 
     @Override
-    public String login() {
-        return "login success";
+    public Flowable<LatestDailyListBean> fetchLatestDaily() {
+        return mZhiHuApis.getLatestDaily();
+    }
+
+    @Override
+    public Flowable<LatestDailyDetailBean> fetchLatestDailyDetail() {
+        return null;
     }
 }

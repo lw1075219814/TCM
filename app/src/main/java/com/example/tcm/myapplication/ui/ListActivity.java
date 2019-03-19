@@ -12,9 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.tcm.myapplication.base.Constants;
 import com.example.tcm.myapplication.entity.Data;
 import com.example.tcm.myapplication.adapter.ListAdapter;
 import com.example.tcm.myapplication.R;
+import com.example.tcm.myapplication.util.IntentUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,7 @@ public class ListActivity extends AppCompatActivity {
 
     private void initView() {
         Intent intent = getIntent();
-        groupPosition = intent.getIntExtra("groupPosition", 0);
+        groupPosition = intent.getIntExtra(Constants.GROUPPOSITION, 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(groupPosition == 0 ? "Traditional Chinese Medicine Therapies" : "Hospital Information");
@@ -83,11 +85,8 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ListActivity.this, DetailActivity.class);
-                intent.putExtra("groupPosition", groupPosition);
-                intent.putExtra("childPosition", i);
-                intent.putExtra("title", ((Data) adapter.getItem(i)).getText());
-                startActivity(intent);
+                IntentUtil.toDetail(ListActivity.this, groupPosition, i,
+                        ((Data) adapter.getItem(i)).getText());
             }
         });
 

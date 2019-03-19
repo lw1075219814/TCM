@@ -28,8 +28,8 @@ public interface AppComponent {
 
     DataManager getDataManager();
 
-    RetrofitHelper getRetrofitHelper();
+    //RetrofitHelper getRetrofitHelper();
 
-    GreenDaoHelper getGreenDaoHelper();
+    //GreenDaoHelper getGreenDaoHelper();
 
 }
