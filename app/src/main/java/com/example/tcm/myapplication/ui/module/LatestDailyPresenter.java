@@ -4,7 +4,7 @@ import com.example.tcm.myapplication.base.BaseResSubscriber;
 import com.example.tcm.myapplication.base.BaseRxPresenter;
 import com.example.tcm.myapplication.entity.LatestDailyListBean;
 import com.example.tcm.myapplication.model.DataManager;
-import com.example.tcm.myapplication.util.RxSchedulersUtil;
+import com.example.tcm.myapplication.util.RxUtil;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class LatestDailyPresenter extends BaseRxPresenter<LatestDailyContract.Vi
     public void fetchLatestDaily() {
         mView.showLoading();
         addSubscribe(mDataManager.fetchLatestDaily()
-                .compose(RxSchedulersUtil.<LatestDailyListBean>rxSchedulers())
+                .compose(RxUtil.<LatestDailyListBean>rxSchedulers())
                 .map(new Function<LatestDailyListBean, List<LatestDailyListBean.TopStoriesBean>>() {
                     @Override
                     public List<LatestDailyListBean.TopStoriesBean> apply(LatestDailyListBean bean) throws Exception {

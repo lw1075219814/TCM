@@ -1,11 +1,9 @@
 package com.example.tcm.myapplication.mvp.main;
 
-import android.content.Intent;
 import android.view.KeyEvent;
 
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.base.BaseActivity;
-import com.example.tcm.myapplication.ui.module.LatestDailyListActivity;
 import com.example.tcm.myapplication.util.IntentUtil;
 
 /**

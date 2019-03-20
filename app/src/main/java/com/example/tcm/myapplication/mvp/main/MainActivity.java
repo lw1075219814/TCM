@@ -1,6 +1,5 @@
 package com.example.tcm.myapplication.mvp.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -9,15 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.adapter.IndexAdapter;
 import com.example.tcm.myapplication.base.Constants;
-import com.example.tcm.myapplication.ui.DetailActivity;
-import com.example.tcm.myapplication.ui.ListActivity;
-import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.util.IntentUtil;
 
 public class MainActivity extends AppCompatActivity {

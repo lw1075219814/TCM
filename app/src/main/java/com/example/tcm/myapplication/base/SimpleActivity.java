@@ -2,15 +2,14 @@ package com.example.tcm.myapplication.base;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.example.tcm.myapplication.App;
-import com.example.tcm.myapplication.R;
+
+import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * @author liuwen
@@ -21,7 +20,7 @@ import com.example.tcm.myapplication.R;
  * @Update.Date 2019/2/1 17:41
  * @see
  */
-public abstract class SupportActivity extends AppCompatActivity {
+public abstract class SimpleActivity extends SupportActivity {
 
     //private Unbinder unbinder;
 
@@ -32,6 +31,7 @@ public abstract class SupportActivity extends AppCompatActivity {
         //unbinder = ButterKnife.bind(this);
         onViewCreated();
         initView();
+        initListener();
         App.getInstance().addActivity(this);
     }
 
@@ -42,16 +42,14 @@ public abstract class SupportActivity extends AppCompatActivity {
             setSupportActionBar(toolBar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowCustomEnabled(true);
-            toolBar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
         }
     }
 
     protected void onViewCreated() {
+
+    }
+
+    protected void initListener(){
 
     }
 

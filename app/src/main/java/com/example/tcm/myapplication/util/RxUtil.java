@@ -1,9 +1,6 @@
 package com.example.tcm.myapplication.util;
 
 
-import android.gesture.Prediction;
-import android.text.TextUtils;
-
 import com.example.tcm.myapplication.model.http.exception.ApiException;
 import com.example.tcm.myapplication.model.http.response.GankResponse;
 import com.example.tcm.myapplication.model.http.response.GoldResponse;
@@ -12,9 +9,6 @@ import com.example.tcm.myapplication.model.http.response.WXResponse;
 
 import org.reactivestreams.Publisher;
 
-import java.lang.reflect.Member;
-
-import dagger.internal.Preconditions;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -33,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  * @Update.Date 2019/2/2 14:34
  * @see
  */
-public class RxSchedulersUtil {
+public class RxUtil {
 
     private static final String ERRORMSG = "服务器返回error";
 

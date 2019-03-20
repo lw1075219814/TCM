@@ -318,5 +318,8 @@ The offers treatment service to a wide range of diseases, including internal med
     <string name="drawer_collection">收藏</string>
     <string name="drawer_setting">设置</string>
     <string name="drawer_about">关于</string>
+    <string name="conventional">常规</string>
+    <string name="auto_cache">自动缓存</string>
+    <string name="night_mode">夜间模式</string>
 
 </resources>

@@ -1,9 +1,7 @@
 package com.example.tcm.myapplication.base;
 
 import android.app.ProgressDialog;
-import android.os.Looper;
 import android.support.v7.app.AppCompatDelegate;
-import android.widget.Toast;
 
 import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.injection.component.ActivityComponent;
@@ -22,7 +20,7 @@ import javax.inject.Inject;
  * @Update.Date 2019/2/1 17:40
  * @see
  */
-public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivity implements BaseView {
 
     @Inject
     protected T mPresener;

@@ -2,7 +2,7 @@ package com.example.tcm.myapplication.mvp.main;
 
 import com.example.tcm.myapplication.base.BaseRxPresenter;
 import com.example.tcm.myapplication.model.DataManager;
-import com.example.tcm.myapplication.util.RxSchedulersUtil;
+import com.example.tcm.myapplication.util.RxUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,17 +27,15 @@ public class SplashPresenter extends BaseRxPresenter<SplashContract.View> implem
      */
     private static final long DELAY_TIME = 2 * 1000;
 
-    private final DataManager mDataManager;
-
     @Inject
-    public SplashPresenter(DataManager dataManager) {
-        mDataManager = dataManager;
+    public SplashPresenter() {
+
     }
 
     @Override
     public void startTimer() {
         addSubscribe(Flowable.timer(DELAY_TIME, TimeUnit.MILLISECONDS)
-                .compose(RxSchedulersUtil.<Long>rxSchedulers())
+                .compose(RxUtil.<Long>rxSchedulers())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
@@ -50,7 +48,6 @@ public class SplashPresenter extends BaseRxPresenter<SplashContract.View> implem
                     }
                 }));
     }
-
 
 
 }

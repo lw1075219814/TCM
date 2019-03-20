@@ -60,7 +60,8 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".mvp.main.Main2Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <service android:name=".service.InitService" />
     </application>
