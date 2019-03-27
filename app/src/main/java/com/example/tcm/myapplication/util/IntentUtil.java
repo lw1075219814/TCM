@@ -5,11 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.tcm.myapplication.base.Constants;
-import com.example.tcm.myapplication.mvp.main.Main2Activity;
+import com.example.tcm.myapplication.mvp.main2.Main2Activity;
 import com.example.tcm.myapplication.ui.DetailActivity;
 import com.example.tcm.myapplication.ui.ListActivity;
 import com.example.tcm.myapplication.ui.module.LatestDailyDetailActivity;
-import com.example.tcm.myapplication.ui.module.LatestDailyListActivity;
 
 /**
  * @author liuwen
@@ -29,7 +28,7 @@ public class IntentUtil {
      */
     public static void toList(Context context, int groupPosition) {
         Intent groupIntent = new Intent(context, ListActivity.class);
-        groupIntent.putExtra(Constants.GROUPPOSITION, groupPosition);
+        groupIntent.putExtra(Constants.IT_GROUPPOSITION, groupPosition);
         context.startActivity(groupIntent);
     }
 
@@ -41,9 +40,9 @@ public class IntentUtil {
      */
     public static void toDetail(Context context, int groupPosition, int childPosition, String text) {
         Intent childIntent = new Intent(context, DetailActivity.class);
-        childIntent.putExtra(Constants.GROUPPOSITION, groupPosition);
-        childIntent.putExtra(Constants.CHILDPOSITION, childPosition);
-        childIntent.putExtra(Constants.TITLE, text);
+        childIntent.putExtra(Constants.IT_GROUPPOSITION, groupPosition);
+        childIntent.putExtra(Constants.IT_CHILDPOSITION, childPosition);
+        childIntent.putExtra(Constants.IT_TITLE, text);
         context.startActivity(childIntent);
     }
 
@@ -63,9 +62,8 @@ public class IntentUtil {
 
     public static void toLatestDailyDetail(Activity context, int id) {
         Intent intent = new Intent(context, LatestDailyDetailActivity.class);
-        intent.putExtra(Constants.LATESTDAILYID, id);
-        context.startActivity(intent);
-        context.finish();
+        intent.putExtra(Constants.IT_LATESTDAILYID, id);
+        //context.startActivity(intent);
     }
 
 }

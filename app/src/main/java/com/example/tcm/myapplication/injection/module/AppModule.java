@@ -4,6 +4,7 @@ import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.model.DataManager;
 import com.example.tcm.myapplication.model.db.GreenDaoHelper;
 import com.example.tcm.myapplication.model.http.RetrofitHelper;
+import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
 
 import javax.inject.Inject;
 
@@ -35,18 +36,8 @@ public class AppModule {
     }
 
     @Provides
-    DataManager provideDataManager(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper) {
-        return new DataManager(retrofitHelper, greenDaoHelper);
+    DataManager provideDataManager(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper, PreferencesHelper preferencesHelper) {
+        return new DataManager(retrofitHelper, greenDaoHelper, preferencesHelper);
     }
-
-//    @Provides
-//    HttpHelper provideRetrofitHelper(HttpHelper iHttp) {
-//        return iHttp;
-//    }
-//
-//    @Provides
-//    DBHelper provideGreenDaoHelper(DBHelper idb) {
-//        return idb;
-//    }
 
 }

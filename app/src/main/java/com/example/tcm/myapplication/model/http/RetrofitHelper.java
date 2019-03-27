@@ -2,7 +2,6 @@ package com.example.tcm.myapplication.model.http;
 
 import com.example.tcm.myapplication.entity.LatestDailyDetailBean;
 import com.example.tcm.myapplication.entity.LatestDailyListBean;
-import com.example.tcm.myapplication.impl.HttpHelper;
 import com.example.tcm.myapplication.model.http.api.ZhiHuApis;
 
 import javax.inject.Inject;

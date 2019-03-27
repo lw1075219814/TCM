@@ -4,6 +4,10 @@ import android.app.Activity;
 
 import com.example.tcm.myapplication.injection.module.FragmentModule;
 import com.example.tcm.myapplication.mvp.ZhihuFragment;
+import com.example.tcm.myapplication.mvp.main2.DailyFragment;
+import com.example.tcm.myapplication.mvp.main2.HotFragment;
+import com.example.tcm.myapplication.mvp.main2.SectionFragment;
+import com.example.tcm.myapplication.mvp.main2.ThemeFragment;
 
 import dagger.Component;
 
@@ -22,4 +26,12 @@ public interface FragmentComponent {
     Activity getActivity();
 
     void inject(ZhihuFragment zhihuFragment);
+
+    void inject(DailyFragment dailyFragment);
+
+    void inject(ThemeFragment themeFragment);
+
+    void inject(SectionFragment sectionFragment);
+
+    void inject(HotFragment hotFragment);
 }

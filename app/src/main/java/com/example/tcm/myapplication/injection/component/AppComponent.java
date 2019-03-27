@@ -9,6 +9,7 @@ import com.example.tcm.myapplication.injection.module.HttpModule;
 import com.example.tcm.myapplication.model.DataManager;
 import com.example.tcm.myapplication.model.db.GreenDaoHelper;
 import com.example.tcm.myapplication.model.http.RetrofitHelper;
+import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
 
 import dagger.Component;
 
@@ -28,8 +29,10 @@ public interface AppComponent {
 
     DataManager getDataManager();
 
-    //RetrofitHelper getRetrofitHelper();
+    RetrofitHelper getRetrofitHelper();
 
-    //GreenDaoHelper getGreenDaoHelper();
+    GreenDaoHelper getGreenDaoHelper();
+
+    PreferencesHelper getPreferencesHelper();
 
 }

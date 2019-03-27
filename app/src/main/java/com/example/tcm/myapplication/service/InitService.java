@@ -83,7 +83,7 @@ public class InitService extends IntentService {
         //strategy.setAppPackageName("com.tencent.xx");  //App的包名
         strategy.setUploadProcess(processName == null || processName.equals(packageName));
 // 初始化Bugly
-        CrashReport.initCrashReport(context, Constants.BUGLY_APP_ID, BuildConfig.DEBUG, strategy);
+        CrashReport.initCrashReport(context, Constants.KEY_BUGLY, BuildConfig.DEBUG, strategy);
 // 如果通过“AndroidManifest.xml”来配置APP信息，初始化方法如下
 // CrashReport.initCrashReport(context, strategy);
     }

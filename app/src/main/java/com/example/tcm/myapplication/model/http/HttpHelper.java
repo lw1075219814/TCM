@@ -1,4 +1,4 @@
-package com.example.tcm.myapplication.impl;
+package com.example.tcm.myapplication.model.http;
 
 import com.example.tcm.myapplication.entity.LatestDailyDetailBean;
 import com.example.tcm.myapplication.entity.LatestDailyListBean;

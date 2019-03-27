@@ -1,7 +1,5 @@
 package com.example.tcm.myapplication.base;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +26,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
 
     @Inject
     protected T mPresenter;
+
     private FragmentComponent fragmentComponent;
 
     public FragmentComponent getFragmentComponent() {
@@ -43,9 +42,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         initInject();
-        mPresenter.attchView(this);
+
+        if (mPresenter != null) {
+            mPresenter.attchView(this);
+        }
+
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

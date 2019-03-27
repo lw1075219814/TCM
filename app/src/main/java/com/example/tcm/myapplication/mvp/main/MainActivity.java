@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new IndexAdapter(this, Constants.TITLES, Constants.CONTENTS);
+        adapter = new IndexAdapter(this, Constants.DATA_TITLES, Constants.DATA_CONTENTS);
         recyclerView.setAdapter(adapter);
 
         adapter.setIndexClickListener(new IndexAdapter.OnIndexClickListener() {

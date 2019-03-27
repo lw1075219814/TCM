@@ -85,7 +85,7 @@ public class SystemUtil {
         if (isShare && imageFile.exists()) {
             if (Build.VERSION.SDK_INT >= 24) {
                 uri = FileProvider.getUriForFile(context.getApplicationContext(),
-                        Constants.FILE_PROVIDER_AUTHORITY, imageFile);
+                        Constants.FILE_PROVIDER, imageFile);
             }
             return uri;
         }
@@ -111,7 +111,7 @@ public class SystemUtil {
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
         if (Build.VERSION.SDK_INT >= 24) {
             uri = FileProvider.getUriForFile(context.getApplicationContext(),
-                    Constants.FILE_PROVIDER_AUTHORITY, imageFile);
+                    Constants.FILE_PROVIDER, imageFile);
         }
         return uri;
     }

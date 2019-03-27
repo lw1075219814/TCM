@@ -1,4 +1,4 @@
-package com.example.tcm.myapplication.mvp.main;
+package com.example.tcm.myapplication.mvp.main2;
 
 import com.example.tcm.myapplication.base.BasePresenter;
 import com.example.tcm.myapplication.base.BaseView;
@@ -18,6 +18,10 @@ public interface Main2Contract {
     }
 
     interface Presenter extends BasePresenter<View> {
+        void setNightModeState(boolean state);
 
+        void setCurrentItem(int index);
+
+        int getCurrentItem();
     }
 }

@@ -1,9 +1,10 @@
-package com.example.tcm.myapplication.ui.module;
+package com.example.tcm.myapplication.mvp.main2;
 
 import com.example.tcm.myapplication.base.BaseResSubscriber;
 import com.example.tcm.myapplication.base.BaseRxPresenter;
 import com.example.tcm.myapplication.entity.LatestDailyListBean;
 import com.example.tcm.myapplication.model.DataManager;
+import com.example.tcm.myapplication.mvp.main2.LatestDailyContract;
 import com.example.tcm.myapplication.util.RxUtil;
 
 import java.util.List;
@@ -58,6 +59,7 @@ public class LatestDailyPresenter extends BaseRxPresenter<LatestDailyContract.Vi
                     @Override
                     public void onError(Throwable t) {
                         super.onError(t);
+                        mView.onError(t);
                         mView.dismissLoading();
                     }
                 })

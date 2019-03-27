@@ -52,7 +52,7 @@ public class ListActivity extends AppCompatActivity {
 
     private void initView() {
         Intent intent = getIntent();
-        groupPosition = intent.getIntExtra(Constants.GROUPPOSITION, 0);
+        groupPosition = intent.getIntExtra(Constants.IT_GROUPPOSITION, 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(groupPosition == 0 ? "Traditional Chinese Medicine Therapies" : "Hospital Information");

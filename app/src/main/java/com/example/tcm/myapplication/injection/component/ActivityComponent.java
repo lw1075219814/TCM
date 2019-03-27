@@ -3,9 +3,8 @@ package com.example.tcm.myapplication.injection.component;
 import android.app.Activity;
 
 import com.example.tcm.myapplication.injection.module.ActivityModule;
-import com.example.tcm.myapplication.mvp.main.Main2Activity;
 import com.example.tcm.myapplication.mvp.main.SplashActivity;
-import com.example.tcm.myapplication.ui.module.LatestDailyListActivity;
+import com.example.tcm.myapplication.mvp.main2.Main2Activity;
 
 import dagger.Component;
 
@@ -24,8 +23,6 @@ public interface ActivityComponent {
     Activity getActivity();
 
     void inject(SplashActivity splashActivity);
-
-    void inject(LatestDailyListActivity testActivity);
 
     void inject(Main2Activity main2Activity);
 }

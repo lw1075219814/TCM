@@ -1,8 +1,9 @@
-package com.example.tcm.myapplication.mvp.main;
+package com.example.tcm.myapplication.mvp.main2;
 
 import com.example.tcm.myapplication.RxBus;
 import com.example.tcm.myapplication.base.BaseResSubscriber;
 import com.example.tcm.myapplication.base.BaseRxPresenter;
+import com.example.tcm.myapplication.model.DataManager;
 import com.example.tcm.myapplication.model.event.NightModeEvent;
 import com.example.tcm.myapplication.util.RxUtil;
 
@@ -21,9 +22,11 @@ import io.reactivex.functions.Function;
  */
 public class Main2Persenter extends BaseRxPresenter<Main2Contract.View> implements Main2Contract.Presenter {
 
-    @Inject
-    public Main2Persenter() {
+    private final DataManager mDataManager;
 
+    @Inject
+    public Main2Persenter(DataManager dataManager) {
+        mDataManager = dataManager;
     }
 
     @Override
@@ -45,9 +48,26 @@ public class Main2Persenter extends BaseRxPresenter<Main2Contract.View> implemen
                 }).subscribeWith(new BaseResSubscriber<Boolean>(mView, "切换模式失败") {
                     @Override
                     public void onNext(Boolean aBoolean) {
-                        //mView.setNightMode(aBoolean);
+                        mView.setNightMode(aBoolean);
+                        mDataManager.setNightModeState(aBoolean);
                         //mView.dismissLoading();
                     }
                 }));
     }
+
+    @Override
+    public void setNightModeState(boolean state) {
+        mDataManager.setNightModeState(state);
+    }
+
+    @Override
+    public void setCurrentItem(int index) {
+        mDataManager.setCurrentItem(index);
+    }
+
+    @Override
+    public int getCurrentItem() {
+        return mDataManager.getCurrentItem();
+    }
+
 }

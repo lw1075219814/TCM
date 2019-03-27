@@ -29,29 +29,31 @@ public class Constants {
     public static final String PATH_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath()
             + File.separator + "codeest" + File.separator + "GeekNews";
 
-    public static final String FILE_PROVIDER_AUTHORITY = "com.shanghai.tcm.fileprovider";
+    public static final String FILE_PROVIDER = "com.shanghai.tcm.fileprovider";
 
     /**
      * 日志标识
      */
-    public static final String LOG_TAG = "log";
+    public static final String LOG_TAG = "tcm_log";
+
 
     /**
      * bugly app id
      */
-    public static final String BUGLY_APP_ID = "e63eb81dd6";
+    public static final String KEY_BUGLY = "e63eb81dd6";
+
 
     /**
      * 首页分栏标题
      */
-    public static final List<String> TITLES = Arrays.asList(
+    public static final List<String> DATA_TITLES = Arrays.asList(
             "Traditional Chinese Medicine Therapies",
             "Hospital Information");
 
     /**
      * 首页分栏内容
      */
-    public static final List<List<Data>> CONTENTS = Arrays.asList(
+    public static final List<List<Data>> DATA_CONTENTS = Arrays.asList(
             Arrays.asList(
                     new Data(0, R.drawable.img1, "Acupuncture"),
                     new Data(1, R.drawable.img2, "Moxibustion"),
@@ -67,33 +69,71 @@ public class Constants {
                     new Data(0, R.drawable.img11, "Shanghai TCM-Integrated Hospital")
             ));
 
+
     /**
      * 首页治疗类型
      */
-    public static final int GROUP_TYPE_THERAPY = 0;
+    public static final int TYPE_GROUP_THERAPY = 0;
 
     /**
      * 首页医院类型
      */
-    public static final int GROUP_TYPE_HOSPITAL = 1;
+    public static final int TYPE_GROUP_HOSPITAL = 1;
+
+    /**
+     * 知乎
+     */
+    public static final int TYPE_ZHIHU = 1;
+
+    /**
+     * 收藏
+     */
+    public static final int TYPE_COLLECTION = 2;
+
+    /**
+     * 设置
+     */
+    public static final int TYPE_SETTING = 3;
+
+    /**
+     * 关于
+     */
+    public static final int TYPE_ABOUT = 4;
 
     /**
      * 首页标题子布局下标
      */
-    public static final String GROUPPOSITION = "groupPosition";
+    public static final String IT_GROUPPOSITION = "groupPosition";
 
     /**
      * 首页recylerView子布局下标
      */
-    public static final String CHILDPOSITION = "childPosition";
+    public static final String IT_CHILDPOSITION = "childPosition";
 
     /**
      * 首页recylerView子布局内容
      */
-    public static final String TITLE = "title";
+    public static final String IT_TITLE = "title";
 
     /**
      * 每天最新item Id
      */
-    public static final String LATESTDAILYID = "LatestDailyId";
+    public static final String IT_LATESTDAILYID = "LatestDailyId";
+
+    /**
+     * sp文件名称
+     */
+    public static final String SP_NAME = "TCM_SP";
+
+    /**
+     * 夜间模式状态
+     */
+    public static final String SP_NIGHT_MODE = "night_mode";
+
+    /**
+     * fragment下标
+     */
+    public static final String SP_CURRENT_ITEM = "current_item";
+
+
 }

@@ -1,7 +1,5 @@
 package com.example.tcm.myapplication.model.db;
 
-import com.example.tcm.myapplication.impl.DBHelper;
-
 import javax.inject.Inject;
 
 /**

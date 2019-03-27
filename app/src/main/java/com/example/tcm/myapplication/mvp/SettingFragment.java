@@ -5,10 +5,15 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
+import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.RxBus;
 import com.example.tcm.myapplication.base.SimpleFragment;
 import com.example.tcm.myapplication.model.event.NightModeEvent;
+import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
+import com.example.tcm.myapplication.util.ToastUtil;
+
+import javax.inject.Inject;
 
 /**
  * @author liuwen
@@ -41,6 +46,10 @@ public class SettingFragment extends SimpleFragment {
         cbAutoCache = view.findViewById(R.id.cb_auto_cache);
         llNightMode = view.findViewById(R.id.ll_night_mode);
         cbNightMode = view.findViewById(R.id.cb_night_mode);
+
+        boolean nightModeState = App.getInstance()
+                .getAppComponent().getPreferencesHelper().getNightModeState();
+        cbNightMode.setChecked(nightModeState);
     }
 
     @Override

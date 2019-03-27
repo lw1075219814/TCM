@@ -62,9 +62,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getData() {
         Intent intent = getIntent();
-        groupPosition = intent.getIntExtra(Constants.GROUPPOSITION, 0);
-        childPosition = intent.getIntExtra(Constants.CHILDPOSITION, 0);
-        title = intent.getStringExtra(Constants.TITLE);
+        groupPosition = intent.getIntExtra(Constants.IT_GROUPPOSITION, 0);
+        childPosition = intent.getIntExtra(Constants.IT_CHILDPOSITION, 0);
+        title = intent.getStringExtra(Constants.IT_TITLE);
 
         if (groupPosition == 0) {
             tab1Detail = MapUtil.getDetail1();

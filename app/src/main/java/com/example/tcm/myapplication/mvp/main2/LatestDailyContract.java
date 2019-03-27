@@ -1,4 +1,4 @@
-package com.example.tcm.myapplication.ui.module;
+package com.example.tcm.myapplication.mvp.main2;
 
 import com.example.tcm.myapplication.base.BaseView;
 import com.example.tcm.myapplication.entity.LatestDailyListBean;
@@ -18,9 +18,11 @@ public class LatestDailyContract {
 
     interface View extends BaseView {
         void returnLatestDaily(List<LatestDailyListBean.TopStoriesBean> bean);
+
+        void onError(Throwable throwable);
     }
 
-    interface Presenter{
+    interface Presenter {
         void fetchLatestDaily();
     }
 }

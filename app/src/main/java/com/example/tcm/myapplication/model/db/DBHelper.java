@@ -1,4 +1,4 @@
-package com.example.tcm.myapplication.impl;
+package com.example.tcm.myapplication.model.db;
 
 /**
  * @author liuwen
