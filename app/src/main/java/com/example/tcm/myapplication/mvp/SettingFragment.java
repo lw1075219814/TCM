@@ -47,9 +47,9 @@ public class SettingFragment extends SimpleFragment {
         llNightMode = view.findViewById(R.id.ll_night_mode);
         cbNightMode = view.findViewById(R.id.cb_night_mode);
 
-        boolean nightModeState = App.getInstance()
-                .getAppComponent().getPreferencesHelper().getNightModeState();
-        cbNightMode.setChecked(nightModeState);
+        PreferencesHelper preferencesHelper = App.getInstance().getAppComponent().getPreferencesHelper();
+        cbAutoCache.setChecked(preferencesHelper.getNoPicState());
+        cbNightMode.setChecked(preferencesHelper.getNightModeState());
     }
 
     @Override

@@ -45,4 +45,14 @@ public class PreferencesHelper implements PrefsHelper {
     public int getCurrentItem() {
         return mSP.getInt(Constants.SP_CURRENT_ITEM, Constants.TYPE_ZHIHU);
     }
+
+    @Override
+    public void setNoPicState(boolean state) {
+        mSP.edit().putBoolean(Constants.SP_NO_PIC_MODE, state).apply();
+    }
+
+    @Override
+    public boolean getNoPicState() {
+        return mSP.getBoolean(Constants.SP_NO_PIC_MODE, false);
+    }
 }

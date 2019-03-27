@@ -34,4 +34,14 @@ public interface PrefsHelper {
      * 获取缓存的fragment下标
      */
     int getCurrentItem();
+
+    /**
+     * 设置无图模式
+     */
+    void setNoPicState(boolean state);
+
+    /**
+     * 获取无图模式状态
+     */
+    boolean getNoPicState();
 }

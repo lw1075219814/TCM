@@ -135,5 +135,10 @@ public class Constants {
      */
     public static final String SP_CURRENT_ITEM = "current_item";
 
+    /**
+     * 无图模式状态
+     */
+    public static final String SP_NO_PIC_MODE = "no_pic_mode";
+
 
 }

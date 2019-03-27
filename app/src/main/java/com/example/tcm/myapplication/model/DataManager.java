@@ -58,4 +58,14 @@ public class DataManager implements HttpHelper, DBHelper, PrefsHelper {
     public int getCurrentItem() {
         return prefsHelper.getCurrentItem();
     }
+
+    @Override
+    public void setNoPicState(boolean state) {
+        prefsHelper.setNoPicState(state);
+    }
+
+    @Override
+    public boolean getNoPicState() {
+        return prefsHelper.getNoPicState();
+    }
 }
