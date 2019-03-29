@@ -10,10 +10,12 @@ import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.RxBus;
 import com.example.tcm.myapplication.base.SimpleFragment;
 import com.example.tcm.myapplication.model.event.NightModeEvent;
+import com.example.tcm.myapplication.model.event.NoPicEvent;
 import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
-import com.example.tcm.myapplication.util.ToastUtil;
 
-import javax.inject.Inject;
+import butterknife.BindView;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 
 /**
  * @author liuwen
@@ -26,10 +28,18 @@ import javax.inject.Inject;
  */
 public class SettingFragment extends SimpleFragment {
 
-    private LinearLayout llAutoCache;
-    private AppCompatCheckBox cbAutoCache;
-    private LinearLayout llNightMode;
-    private AppCompatCheckBox cbNightMode;
+    @BindView(R.id.ll_auto_cache)
+    LinearLayout llAutoCache;
+    @BindView(R.id.cb_auto_cache)
+    AppCompatCheckBox cbAutoCache;
+    @BindView(R.id.ll_night_mode)
+    LinearLayout llNightMode;
+    @BindView(R.id.cb_night_mode)
+    AppCompatCheckBox cbNightMode;
+    @BindView(R.id.ll_no_pic)
+    LinearLayout llNoPic;
+    @BindView(R.id.cb_no_pic)
+    AppCompatCheckBox cbNoPic;
 
     public static SettingFragment getInstance() {
         return new SettingFragment();
@@ -42,60 +52,50 @@ public class SettingFragment extends SimpleFragment {
 
     @Override
     protected void initView(View view) {
-        llAutoCache = view.findViewById(R.id.ll_auto_cache);
-        cbAutoCache = view.findViewById(R.id.cb_auto_cache);
-        llNightMode = view.findViewById(R.id.ll_night_mode);
-        cbNightMode = view.findViewById(R.id.cb_night_mode);
-
-        PreferencesHelper preferencesHelper = App.getInstance().getAppComponent().getPreferencesHelper();
-        cbAutoCache.setChecked(preferencesHelper.getNoPicState());
+        PreferencesHelper preferencesHelper = App.
+                getInstance().getAppComponent().getPreferencesHelper();
+        cbNoPic.setChecked(preferencesHelper.getNoPicState());
         cbNightMode.setChecked(preferencesHelper.getNightModeState());
     }
 
-    @Override
-    protected void initListener() {
-        super.initListener();
-        llAutoCache.setOnClickListener(onClickListener);
-        cbAutoCache.setOnCheckedChangeListener(onCheckedChangeListener);
-        llNightMode.setOnClickListener(onClickListener);
-        cbNightMode.setOnCheckedChangeListener(onCheckedChangeListener);
+    @OnClick({R.id.ll_auto_cache, R.id.ll_night_mode})
+    void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_auto_cache:
+                cbAutoCache.setChecked(!cbAutoCache.isChecked());
+                break;
+            case R.id.ll_night_mode:
+                cbNightMode.setChecked(!cbNightMode.isChecked());
+                break;
+            default:
+                break;
+        }
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.ll_auto_cache:
-                    cbAutoCache.setChecked(!cbAutoCache.isChecked());
-                    break;
-                case R.id.ll_night_mode:
-                    cbNightMode.setChecked(!cbNightMode.isChecked());
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
+    @OnCheckedChanged({R.id.cb_auto_cache, R.id.cb_no_pic, R.id.cb_night_mode})
+    void OnCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        switch (compoundButton.getId()) {
+            case R.id.cb_auto_cache:
 
-    private CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            switch (buttonView.getId()) {
-                case R.id.cb_auto_cache:
-
-                    break;
-                case R.id.cb_night_mode:
-                    setNightMode(isChecked);
-                    break;
-                default:
-                    break;
-            }
+                break;
+            case R.id.cb_no_pic:
+                setNoPic(isChecked);
+                break;
+            case R.id.cb_night_mode:
+                setNightMode(isChecked);
+                break;
+            default:
+                break;
         }
-    };
+    }
+
+    private void setNoPic(boolean isChecked) {
+        NoPicEvent noPicEvent = new NoPicEvent(isChecked);
+        RxBus.get().post(noPicEvent);
+    }
 
     private void setNightMode(boolean isChecked) {
-        NightModeEvent nightModeEvent = new NightModeEvent();
-        nightModeEvent.setNightMode(isChecked);
+        NightModeEvent nightModeEvent = new NightModeEvent(isChecked);
         RxBus.get().post(nightModeEvent);
     }
 }

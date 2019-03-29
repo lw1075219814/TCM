@@ -17,10 +17,14 @@ import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.base.BaseActivity;
 import com.example.tcm.myapplication.base.Constants;
+import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
 import com.example.tcm.myapplication.mvp.AboutFragment;
 import com.example.tcm.myapplication.mvp.SettingFragment;
 import com.example.tcm.myapplication.mvp.ZhihuFragment;
 
+import javax.inject.Inject;
+
+import butterknife.BindView;
 import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
@@ -34,16 +38,21 @@ import me.yokeyword.fragmentation.ISupportFragment;
  */
 public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2Contract.View {
 
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
+    @Inject
+    PreferencesHelper preferencesHelper;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.drawerLayout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.navigation)
+    NavigationView navigationView;
+
+    private ActionBarDrawerToggle drawerToggle;
     private ZhihuFragment zhihuFragment;
     private SettingFragment settingFragment;
-
-    private ISupportFragment currentFragment = null;
-    private MenuItem currentMenuItem = null;
-    private ActionBarDrawerToggle drawerToggle;
     private AboutFragment aboutFragment;
+    private MenuItem currentMenuItem;
     private int currentItem;
     private int hideItem;
 
@@ -79,9 +88,6 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
 
     @Override
     protected void initView() {
-        toolbar = findViewById(R.id.toolbar);
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navigationView = findViewById(R.id.navigation);
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.zhihu);
 
         setToolBar(toolbar, "知乎");
@@ -98,6 +104,9 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
 
         ISupportFragment[] fragments = {zhihuFragment, settingFragment, aboutFragment};
         loadMultipleRootFragment(R.id.fl_container, 0, fragments);
+
+        boolean isNightModeState = preferencesHelper.getNightModeState();
+        //setNightMode(isNightModeState);
     }
 
     @Override
@@ -113,18 +122,15 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
                     currentMenuItem.setChecked(false);
                     switch (menuItem.getItemId()) {
                         case R.id.zhihu:
-                            //setCurrentFragment(zhihuFragment);
                             currentItem = Constants.TYPE_ZHIHU;
                             break;
                         case R.id.collection:
                             currentItem = Constants.TYPE_COLLECTION;
                             break;
                         case R.id.setting:
-                            //setCurrentFragment(settingFragment);
                             currentItem = Constants.TYPE_SETTING;
                             break;
                         case R.id.about:
-                            //setCurrentFragment(aboutFragment);
                             currentItem = Constants.TYPE_ABOUT;
                             break;
                         default:
@@ -139,11 +145,6 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
                     return true;
                 }
             };
-
-    private void setCurrentFragment(ISupportFragment showFragemnt) {
-        showHideFragment(showFragemnt, currentFragment);
-        currentFragment = showFragemnt;
-    }
 
     private void setCurrentMenuItem(MenuItem menuItem) {
         menuItem.setChecked(true);

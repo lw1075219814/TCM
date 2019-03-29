@@ -12,6 +12,13 @@ package com.example.tcm.myapplication.model.event;
 public class NightModeEvent {
     private boolean isNightMode;
 
+    public NightModeEvent() {
+    }
+
+    public NightModeEvent(boolean isNightMode) {
+        this.isNightMode = isNightMode;
+    }
+
     public boolean isNightMode() {
         return isNightMode;
     }

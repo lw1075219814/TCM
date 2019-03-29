@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.tcm.myapplication.App;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
@@ -22,13 +24,13 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 public abstract class SimpleActivity extends SupportActivity {
 
-    //private Unbinder unbinder;
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
-        //unbinder = ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         onViewCreated();
         initView();
         initListener();
@@ -49,14 +51,16 @@ public abstract class SimpleActivity extends SupportActivity {
 
     }
 
-    protected void initListener(){
+    protected void initListener() {
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         App.getInstance().removeActivity(this);
     }
 

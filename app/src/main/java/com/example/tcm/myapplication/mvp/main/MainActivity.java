@@ -1,10 +1,8 @@
 package com.example.tcm.myapplication.mvp.main;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,71 +13,61 @@ import android.view.View;
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.adapter.IndexAdapter;
 import com.example.tcm.myapplication.base.Constants;
+import com.example.tcm.myapplication.base.SimpleActivity;
 import com.example.tcm.myapplication.util.IntentUtil;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class MainActivity extends SimpleActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
 
     private IndexAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+    protected int setLayoutId() {
+        return R.layout.activity_main;
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    private void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    protected void initView() {
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "The appointment booking function is under development, " +
-                        "please wait patiently", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IndexAdapter(this, Constants.DATA_TITLES, Constants.DATA_CONTENTS);
         recyclerView.setAdapter(adapter);
-
-        adapter.setIndexClickListener(new IndexAdapter.OnIndexClickListener() {
-            @Override
-            public void setGroupClick(int groupPosition) {
-                IntentUtil.toList(MainActivity.this, groupPosition);
-            }
-
-            @Override
-            public void setChildClick(int groupPosition, int childPosition) {
-                String text = adapter.getContents().get(groupPosition).get(childPosition).getText();
-                IntentUtil.toDetail(MainActivity.this, groupPosition, childPosition, text);
-            }
-        });
-
-//        recyclerView.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                ((RecyclerView) adapter.getChildViews().get(0)).addOnScrollListener(onScrollListener);
-//                ((RecyclerView) adapter.getChildViews().get(1)).addOnScrollListener(onScrollListener);
-//            }
-//        }, 1500);
-//
-//        recyclerView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                return false;
-//            }
-//        });
     }
+
+    @Override
+    protected void initListener() {
+        super.initListener();
+        adapter.setIndexClickListener(onIndexClickListener);
+    }
+
+    @OnClick({R.id.fab})
+    void OnClick(View view) {
+        Snackbar.make(view, "The appointment booking function is under development, " +
+                "please wait patiently", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
+    private IndexAdapter.OnIndexClickListener onIndexClickListener = new IndexAdapter.OnIndexClickListener() {
+        @Override
+        public void setGroupClick(int groupPosition) {
+            IntentUtil.toList(MainActivity.this, groupPosition);
+        }
+
+        @Override
+        public void setChildClick(int groupPosition, int childPosition) {
+            String text = adapter.getContents().get(groupPosition).get(childPosition).getText();
+            IntentUtil.toDetail(MainActivity.this, groupPosition, childPosition, text);
+        }
+    };
+
 
     private RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override

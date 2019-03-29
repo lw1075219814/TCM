@@ -323,5 +323,6 @@ The offers treatment service to a wide range of diseases, including internal med
     <string name="night_mode">夜间模式</string>
     <string name="open">打开</string>
     <string name="close">关闭</string>
+    <string name="no_pic">无图模式</string>
 
 </resources>

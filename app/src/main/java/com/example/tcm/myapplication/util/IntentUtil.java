@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.tcm.myapplication.base.Constants;
+import com.example.tcm.myapplication.mvp.main.MainActivity;
 import com.example.tcm.myapplication.mvp.main2.Main2Activity;
 import com.example.tcm.myapplication.ui.DetailActivity;
 import com.example.tcm.myapplication.ui.ListActivity;
@@ -52,9 +53,9 @@ public class IntentUtil {
      * @param context
      */
     public static void toMain(Activity context) {
-        //Intent intent = new Intent(this, MainActivity.class);
-        Intent intent = new Intent(context, Main2Activity.class);
-        //Intent intent = new Intent(context, LatestDailyListActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
+//        Intent intent = new Intent(context, Main2Activity.class);
+//        Intent intent = new Intent(context, LatestDailyListActivity.class);
         context.startActivity(intent);
         context.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         context.finish();

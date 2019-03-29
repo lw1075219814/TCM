@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileSdkVersion rootProject.android.compileSdkVersion
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -25,7 +25,7 @@ android {
         targetCompatibility 1.8
     }
 
-    Properties properties = new Properties()
+    final Properties properties = new Properties()
     properties.load(new FileInputStream(project.file("../keystore.properties")))
 
     signingConfigs {
@@ -56,43 +56,41 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    implementation rootProject.ext.dependencies['v7']
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation rootProject.ext.dependencies['constraint']
-    implementation rootProject.ext.dependencies['design']
-    implementation rootProject.ext.dependencies['glide']
-    annotationProcessor rootProject.ext.dependencies['glideCompiler']
-    implementation rootProject.ext.dependencies['circleImageview']
-    implementation rootProject.ext.dependencies['rxJava']
-    implementation rootProject.ext.dependencies['rxAndroid']
-    implementation rootProject.ext.dependencies['rxBus']
-    implementation rootProject.ext.dependencies['dagger']
-    implementation rootProject.ext.dependencies['daggerAndroid']
-    implementation rootProject.ext.dependencies['daggerAndroidSupport']
-    annotationProcessor rootProject.ext.dependencies['daggerCompiler']
-    annotationProcessor rootProject.ext.dependencies['daggerAndroidProcessor']
-    implementation rootProject.ext.dependencies['guava']
-    implementation rootProject.ext.dependencies['loadingView']
-    implementation rootProject.ext.dependencies['cardView']
-    implementation rootProject.ext.dependencies['retrofit']
-    implementation rootProject.ext.dependencies['retrofitConverterGson']
-    implementation rootProject.ext.dependencies['retrofitAdapterRxjava2']
-    implementation rootProject.ext.dependencies['okhttp']
-    implementation rootProject.ext.dependencies['okhttpLoggingInterceptor']
-    implementation rootProject.ext.dependencies['gson']
+    implementation rootProject.deps.v7
+    implementation rootProject.deps.constraint
+    implementation rootProject.deps.design
+    implementation rootProject.deps.glide
+    annotationProcessor rootProject.deps.glideCompiler
+    implementation rootProject.deps.circleImageview
+    implementation rootProject.deps.rxJava
+    implementation rootProject.deps.rxAndroid
+    implementation rootProject.deps.rxBus
+    implementation rootProject.deps.dagger
+    implementation rootProject.deps.daggerAndroid
+    implementation rootProject.deps.daggerAndroidSupport
+    annotationProcessor rootProject.deps.daggerCompiler
+    annotationProcessor rootProject.deps.daggerAndroidProcessor
+    implementation rootProject.deps.guava
+    implementation rootProject.deps.loadingView
+    implementation rootProject.deps.cardView
+    implementation rootProject.deps.retrofit
+    implementation rootProject.deps.retrofitConverterGson
+    implementation rootProject.deps.retrofitAdapterRxjava2
+    implementation rootProject.deps.okhttp
+    implementation rootProject.deps.okhttpLoggingInterceptor
+    implementation rootProject.deps.gson
     //implementation rootProject.ext.dependencies['leakcanaryAndroid']
     //implementation rootProject.ext.dependencies['leakcanaryAndroidNoOp']
-    implementation rootProject.ext.dependencies['bugly']
-    implementation rootProject.ext.dependencies['logger']
+    implementation rootProject.deps.bugly
+    implementation rootProject.deps.logger
     //implementation rootProject.ext.dependencies['recyclerview']
     //implementation rootProject.ext.dependencies['recyclerview1']
-    implementation 'com.jude:easyrecyclerview:4.4.2'
+    implementation rootProject.deps.easyRecyclerView
 
-    //implementation rootProject.ext.dependencies['butterknife']
-    //implementation('com.jakewharton:butterknife:10.1.0') {
-        //exclude module: 'annotation'
-    //}
-    //annotationProcessor rootProject.ext.dependencies['butterknifeProcessor']
-    implementation rootProject.ext.dependencies['fragmentation']
-
+    implementation rootProject.deps.butterknife
+    annotationProcessor rootProject.deps.butterknifeProcessor
+    implementation rootProject.deps.fragmentation
+    //implementation rootProject.deps.epoxy
+    //annotationProcessor rootProject.deps.epoxyProcessor
 }

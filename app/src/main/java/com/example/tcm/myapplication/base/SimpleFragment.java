@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
@@ -21,6 +23,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 public abstract class SimpleFragment extends SupportFragment {
 
     private boolean isInited = false;
+    private Unbinder unbinder;
 
     @Nullable
     @Override
@@ -38,6 +41,7 @@ public abstract class SimpleFragment extends SupportFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //bind
+        unbinder = ButterKnife.bind(this, view);
         initView(view);
         initListener();
     }
@@ -56,6 +60,9 @@ public abstract class SimpleFragment extends SupportFragment {
     public void onDestroyView() {
         super.onDestroyView();
         //unbind
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 
     protected abstract int getLayoutId();
