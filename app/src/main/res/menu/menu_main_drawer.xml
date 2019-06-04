@@ -6,7 +6,15 @@
                 android:id="@+id/zhihu"
                 android:checked="true"
                 android:icon="@drawable/ic_drawer_zhihu"
-                android:title="@string/drawer_zhihu"></item>
+                android:title="@string/drawer_zhihu" />
+            <item
+                android:id="@+id/wechat"
+                android:icon="@drawable/ic_drawer_wechat"
+                android:title="@string/drawer_wechat" />
+            <item
+                android:id="@+id/gold"
+                android:icon="@drawable/ic_drawer_gold"
+                android:title="@string/drawer_gold"/>
         </menu>
     </item>
     <item android:title="@string/drawer_group_option">

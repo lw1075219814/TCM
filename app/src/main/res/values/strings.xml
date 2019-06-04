@@ -324,5 +324,10 @@ The offers treatment service to a wide range of diseases, including internal med
     <string name="open">打开</string>
     <string name="close">关闭</string>
     <string name="no_pic">无图模式</string>
+    <string name="skip">跳过</string>
+    <string name="drawer_wechat">微信</string>
+    <string name="wechat_detail">微信详情</string>
+    <string name="drawer_gold">掘金</string>
+    <string name="table_select">标签选择</string>
 
 </resources>

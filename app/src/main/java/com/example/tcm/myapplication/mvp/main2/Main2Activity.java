@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
@@ -20,7 +19,9 @@ import com.example.tcm.myapplication.base.Constants;
 import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
 import com.example.tcm.myapplication.mvp.AboutFragment;
 import com.example.tcm.myapplication.mvp.SettingFragment;
-import com.example.tcm.myapplication.mvp.ZhihuFragment;
+import com.example.tcm.myapplication.mvp.main2.gold.GoldFragment;
+import com.example.tcm.myapplication.mvp.main2.wechat.WechatFragment;
+import com.example.tcm.myapplication.mvp.main2.zhihu.ZhihuFragment;
 
 import javax.inject.Inject;
 
@@ -55,6 +56,8 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
     private MenuItem currentMenuItem;
     private int currentItem;
     private int hideItem;
+    private WechatFragment wechatFragment;
+    private GoldFragment goldFragment;
 
     @Override
     protected void initInject() {
@@ -98,11 +101,16 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
         zhihuFragment = ZhihuFragment.getInstance();
         settingFragment = SettingFragment.getInstance();
         aboutFragment = AboutFragment.getInstance();
+        wechatFragment = WechatFragment.getInstance();
+        goldFragment = GoldFragment.getInstance();
+
         currentItem = Constants.TYPE_ZHIHU;
         hideItem = Constants.TYPE_ZHIHU;
         currentMenuItem = menuItem;
 
-        ISupportFragment[] fragments = {zhihuFragment, settingFragment, aboutFragment};
+        ISupportFragment[] fragments = {
+                zhihuFragment, settingFragment, aboutFragment, wechatFragment, goldFragment
+        };
         loadMultipleRootFragment(R.id.fl_container, 0, fragments);
 
         boolean isNightModeState = preferencesHelper.getNightModeState();
@@ -124,6 +132,9 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
                         case R.id.zhihu:
                             currentItem = Constants.TYPE_ZHIHU;
                             break;
+                        case R.id.wechat:
+                            currentItem = Constants.TYPE_WECHAT;
+                            break;
                         case R.id.collection:
                             currentItem = Constants.TYPE_COLLECTION;
                             break;
@@ -133,6 +144,9 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
                         case R.id.about:
                             currentItem = Constants.TYPE_ABOUT;
                             break;
+                        case R.id.gold:
+                            currentItem = Constants.TYPE_GOLD;
+                            break;
                         default:
                             break;
                     }
@@ -141,7 +155,7 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
                     setCurrentMenuItem(menuItem);
                     hideItem = currentItem;
                     mPresener.setCurrentItem(currentItem);
-                    drawerLayout.closeDrawer(Gravity.LEFT);
+                    drawerLayout.closeDrawers();
                     return true;
                 }
             };
@@ -160,6 +174,10 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
             return settingFragment;
         } else if (currentItem == Constants.TYPE_ABOUT) {
             return aboutFragment;
+        } else if (currentItem == Constants.TYPE_WECHAT) {
+            return wechatFragment;
+        } else if (currentItem == Constants.TYPE_GOLD) {
+            return goldFragment;
         } else {
             return zhihuFragment;
         }
@@ -174,6 +192,10 @@ public class Main2Activity extends BaseActivity<Main2Persenter> implements Main2
             return R.id.setting;
         } else if (currentItem == Constants.TYPE_ABOUT) {
             return R.id.about;
+        } else if (currentItem == Constants.TYPE_WECHAT) {
+            return R.id.wechat;
+        } else if (currentItem == Constants.TYPE_GOLD) {
+            return R.id.gold;
         } else {
             return R.id.zhihu;
         }

@@ -3,6 +3,7 @@ package com.example.tcm.myapplication.injection.module;
 import android.app.Activity;
 
 import com.example.tcm.dagger2.demo.bean.Man;
+import com.example.tcm.myapplication.injection.scope.ActivityScope;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,7 @@ public class ActivityModule {
     }
 
     @Provides
+    @ActivityScope
     Activity provideActivity(){
         return mActivity;
     }

@@ -1,6 +1,6 @@
 package com.example.tcm.myapplication.util;
 
-import com.example.tcm.myapplication.entity.Data2;
+import com.example.tcm.myapplication.bean.Data2;
 
 import java.util.ArrayList;
 import java.util.HashMap;

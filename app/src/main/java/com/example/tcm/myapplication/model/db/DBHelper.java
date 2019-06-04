@@ -1,5 +1,11 @@
 package com.example.tcm.myapplication.model.db;
 
+import com.example.tcm.myapplication.bean.GoldItemBean;
+
+import java.util.List;
+
+import io.reactivex.Flowable;
+
 /**
  * @author liuwen
  * @Module.Name
@@ -10,5 +16,9 @@ package com.example.tcm.myapplication.model.db;
  * @see
  */
 public interface DBHelper {
+
+    void updateGoldItems(List<GoldItemBean> items);
+
+    Flowable<List<GoldItemBean>> getGoldTtems();
 
 }

@@ -1,18 +1,31 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
     defaultConfig {
-        applicationId rootProject.ext.android.applicationId
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
+        applicationId rootProject.android.applicationId
+        minSdkVersion rootProject.android.minSdkVersion
+        targetSdkVersion rootProject.android.targetSdkVersion
+        versionCode rootProject.android.versionCode
+        versionName rootProject.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         //65k方法分包
         multiDexEnabled true
+
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
+
+        manifestPlaceholders = [
+                BUGLY_APPID       : 'e63eb81dd6',
+                BUGLY_APP_VERSION : 1,
+                BUGLY_APP_CHANNEL : 'tcm',
+                BUGLY_ENABLE_DEBUG: true,
+        ]
     }
 
     lintOptions {
@@ -51,6 +64,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    flavorDimensions "stethoDebug"
+//    productFlavors {
+//        stetho {
+//            applicationId = "com.example.tcm.debug.myapplication"
+//        }
+//    }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.example.tcm.myapplication.model.db'
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -71,7 +97,7 @@ dependencies {
     implementation rootProject.deps.daggerAndroidSupport
     annotationProcessor rootProject.deps.daggerCompiler
     annotationProcessor rootProject.deps.daggerAndroidProcessor
-    implementation rootProject.deps.guava
+    //implementation rootProject.deps.guava
     implementation rootProject.deps.loadingView
     implementation rootProject.deps.cardView
     implementation rootProject.deps.retrofit
@@ -80,17 +106,22 @@ dependencies {
     implementation rootProject.deps.okhttp
     implementation rootProject.deps.okhttpLoggingInterceptor
     implementation rootProject.deps.gson
-    //implementation rootProject.ext.dependencies['leakcanaryAndroid']
-    //implementation rootProject.ext.dependencies['leakcanaryAndroidNoOp']
+    debugImplementation rootProject.deps.leakcanaryAndroid
+    releaseImplementation rootProject.deps.leakcanaryAndroidNoOp
     implementation rootProject.deps.bugly
     implementation rootProject.deps.logger
     //implementation rootProject.ext.dependencies['recyclerview']
     //implementation rootProject.ext.dependencies['recyclerview1']
     implementation rootProject.deps.easyRecyclerView
-
     implementation rootProject.deps.butterknife
     annotationProcessor rootProject.deps.butterknifeProcessor
     implementation rootProject.deps.fragmentation
-    //implementation rootProject.deps.epoxy
-    //annotationProcessor rootProject.deps.epoxyProcessor
+    implementation rootProject.deps.epoxy
+    annotationProcessor rootProject.deps.epoxyProcessor
+    //implementation rootProject.deps.baseAdapter
+    implementation project(':library')
+    implementation rootProject.deps.greenDao
+    implementation rootProject.deps.sqlcipher
+    implementation rootProject.deps.stetho
+    implementation rootProject.deps.stethoOkhttp3
 }

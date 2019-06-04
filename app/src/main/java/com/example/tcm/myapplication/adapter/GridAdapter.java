@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.tcm.myapplication.App;
-import com.example.tcm.myapplication.entity.Data;
+import com.example.tcm.myapplication.bean.Data;
 import com.example.tcm.myapplication.R;
 
 import java.util.ArrayList;

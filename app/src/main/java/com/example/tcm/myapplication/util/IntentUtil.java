@@ -3,13 +3,19 @@ package com.example.tcm.myapplication.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 
 import com.example.tcm.myapplication.base.Constants;
-import com.example.tcm.myapplication.mvp.main.MainActivity;
+import com.example.tcm.myapplication.bean.GoldItemBean;
 import com.example.tcm.myapplication.mvp.main2.Main2Activity;
+import com.example.tcm.myapplication.mvp.main2.gold.GoldManagerActivity;
+import com.example.tcm.myapplication.mvp.main2.wechat.WeChatDetailaActivity;
 import com.example.tcm.myapplication.ui.DetailActivity;
 import com.example.tcm.myapplication.ui.ListActivity;
-import com.example.tcm.myapplication.ui.module.LatestDailyDetailActivity;
+import com.example.tcm.myapplication.mvp.main2.zhihu.LatestDailyDetailActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author liuwen
@@ -53,18 +59,44 @@ public class IntentUtil {
      * @param context
      */
     public static void toMain(Activity context) {
-        Intent intent = new Intent(context, MainActivity.class);
-//        Intent intent = new Intent(context, Main2Activity.class);
+//        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, Main2Activity.class);
 //        Intent intent = new Intent(context, LatestDailyListActivity.class);
         context.startActivity(intent);
         context.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         context.finish();
     }
 
+    /**
+     * 跳转到知乎详情页
+     *
+     * @param context
+     * @param id
+     */
     public static void toLatestDailyDetail(Activity context, int id) {
         Intent intent = new Intent(context, LatestDailyDetailActivity.class);
         intent.putExtra(Constants.IT_LATESTDAILYID, id);
-        //context.startActivity(intent);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到微信详情页
+     */
+    public static void toWeChatDetati(Context context, String title, String url) {
+        Intent intent = new Intent(context, WeChatDetailaActivity.class);
+        intent.putExtra(Constants.WECHAT_TITLE, title);
+        intent.putExtra(Constants.WECHAT_URL, url);
+        ((Activity) context).startActivity(intent);
+    }
+
+    /**
+     * 跳转到掘金标签管理页
+     */
+    public static void toGoldManager(Context context, String[] titles, ArrayList<GoldItemBean> beans) {
+        Intent intent = new Intent(context, GoldManagerActivity.class);
+        intent.putExtra(Constants.GOLD_TITLES, titles);
+        intent.putParcelableArrayListExtra(Constants.GOLD_POSITION, beans);
+        ((Activity) context).startActivity(intent);
     }
 
 }

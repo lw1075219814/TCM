@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.tcm.myapplication.base.Constants;
-import com.example.tcm.myapplication.entity.Data;
+import com.example.tcm.myapplication.bean.Data;
 import com.example.tcm.myapplication.adapter.ListAdapter;
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.util.IntentUtil;

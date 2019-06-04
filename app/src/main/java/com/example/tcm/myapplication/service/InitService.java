@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
+import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.BuildConfig;
 import com.example.tcm.myapplication.base.Constants;
 import com.example.tcm.myapplication.util.SystemUtil;
@@ -12,6 +13,10 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.CsvFormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.smtt.sdk.QbSdk;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * @author liuwen
@@ -54,6 +59,18 @@ public class InitService extends IntentService {
         initLogger();
         //初始化bugly
         initBugly();
+        //预加载x5内核
+        QbSdk.initX5Environment(App.getInstance().getContext(), new QbSdk.PreInitCallback() {
+            @Override
+            public void onCoreInitFinished() {
+
+            }
+
+            @Override
+            public void onViewInitFinished(boolean b) {
+
+            }
+        });
     }
 
     private void initLogger() {
@@ -78,13 +95,31 @@ public class InitService extends IntentService {
         String processName = SystemUtil.getProcessName(android.os.Process.myPid());
 // 设置是否为上报进程
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
+//        strategy.setCrashHandleCallback(new CrashReport.CrashHandleCallback() {
+//            @Override
+//            public synchronized Map<String, String> onCrashHandleStart(int i, String s, String s1, String s2) {
+//                LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+//                String x5CrashInfo = com.tencent.smtt.sdk.WebView.getCrashExtraMessage(context);
+//                map.put("x5crashInfo", x5CrashInfo);
+//                return map;
+//            }
+//
+//            @Override
+//            public synchronized byte[] onCrashHandleStart2GetExtraDatas(int i, String s, String s1, String s2) {
+//                try {
+//                    return "Extra data.".getBytes("UTF-8");
+//                } catch (Exception e) {
+//                    return null;
+//                }
+//            }
+//        });
+
         //strategy.setAppChannel()//设置渠道
         //strategy.setAppVersion("1.0.1");//App的版本
         //strategy.setAppPackageName("com.tencent.xx");  //App的包名
         strategy.setUploadProcess(processName == null || processName.equals(packageName));
 // 初始化Bugly
-        CrashReport.initCrashReport(context, Constants.KEY_BUGLY, BuildConfig.DEBUG, strategy);
 // 如果通过“AndroidManifest.xml”来配置APP信息，初始化方法如下
-// CrashReport.initCrashReport(context, strategy);
+        CrashReport.initCrashReport(context, strategy);
     }
 }

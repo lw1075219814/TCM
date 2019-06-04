@@ -1,6 +1,6 @@
 package com.example.tcm.myapplication.model.http.api;
 
-import com.example.tcm.myapplication.entity.LatestDailyListBean;
+import com.example.tcm.myapplication.bean.LatestDailyListBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
@@ -16,7 +16,7 @@ import retrofit2.http.GET;
  */
 public interface ZhiHuApis {
 
-    String HOST = "http://news-at.zhihu.com/api/4/";
+    String URL = "http://news-at.zhihu.com/api/4/";
 
     /**
      * 获取最新日报

@@ -22,7 +22,6 @@ import me.yokeyword.fragmentation.SupportFragment;
  */
 public abstract class SimpleFragment extends SupportFragment {
 
-    private boolean isInited = false;
     private Unbinder unbinder;
 
     @Nullable
@@ -48,12 +47,6 @@ public abstract class SimpleFragment extends SupportFragment {
 
     protected void initListener() {
 
-    }
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
-        isInited = true;
     }
 
     @Override

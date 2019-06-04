@@ -4,7 +4,7 @@ import android.os.Environment;
 
 import com.example.tcm.myapplication.App;
 import com.example.tcm.myapplication.R;
-import com.example.tcm.myapplication.entity.Data;
+import com.example.tcm.myapplication.bean.Data;
 
 import java.io.File;
 import java.util.Arrays;
@@ -21,6 +21,11 @@ import java.util.List;
  */
 public class Constants {
 
+    /**
+     * 需要APIKEY请去 http://www.tianapi.com/#wxnew 申请,复用会减少访问可用次
+     */
+    public static final String KEY_API = "52b7ec3471ac3bec6846577e79f20e4c";
+
     public static final String PATH_DATA = App.getInstance().getCacheDir().getAbsolutePath()
             + File.separator + "data";
 
@@ -35,13 +40,6 @@ public class Constants {
      * 日志标识
      */
     public static final String LOG_TAG = "tcm_log";
-
-
-    /**
-     * bugly app id
-     */
-    public static final String KEY_BUGLY = "e63eb81dd6";
-
 
     /**
      * 首页分栏标题
@@ -101,6 +99,16 @@ public class Constants {
     public static final int TYPE_ABOUT = 4;
 
     /**
+     * 微信
+     */
+    public static final int TYPE_WECHAT = 5;
+
+    /**
+     * 掘金
+     */
+    public static final int TYPE_GOLD = 6;
+
+    /**
      * 首页标题子布局下标
      */
     public static final String IT_GROUPPOSITION = "groupPosition";
@@ -140,5 +148,23 @@ public class Constants {
      */
     public static final String SP_NO_PIC_MODE = "no_pic_mode";
 
+    /**
+     * url
+     */
+    public static final String WECHAT_URL = "wechat_url";
 
+    /**
+     * title
+     */
+    public static final String WECHAT_TITLE="wechat_title";
+
+    /**
+     * gold titles
+     */
+    public static final String GOLD_TITLES="gold_titles";
+
+    /**
+     * gold position
+     */
+    public static final String GOLD_POSITION="gold_position";
 }

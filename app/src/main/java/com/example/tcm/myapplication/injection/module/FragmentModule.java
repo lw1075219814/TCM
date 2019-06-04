@@ -3,6 +3,8 @@ package com.example.tcm.myapplication.injection.module;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
+import com.example.tcm.myapplication.injection.scope.FragmentScope;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,6 +27,7 @@ public class FragmentModule {
     }
 
     @Provides
+    @FragmentScope
     Fragment provideFragment() {
         return mFragment;
     }

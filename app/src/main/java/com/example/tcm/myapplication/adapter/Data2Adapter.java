@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.tcm.myapplication.App;
-import com.example.tcm.myapplication.entity.Data2;
+import com.example.tcm.myapplication.bean.Data2;
 import com.example.tcm.myapplication.util.MapUtil;
 import com.example.tcm.myapplication.R;
 

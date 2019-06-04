@@ -7,6 +7,7 @@ import com.example.tcm.myapplication.model.http.RetrofitHelper;
 import com.example.tcm.myapplication.model.prefs.PreferencesHelper;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,11 +32,13 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton
     App provideApp() {
         return mApp;
     }
 
     @Provides
+    @Singleton
     DataManager provideDataManager(RetrofitHelper retrofitHelper, GreenDaoHelper greenDaoHelper, PreferencesHelper preferencesHelper) {
         return new DataManager(retrofitHelper, greenDaoHelper, preferencesHelper);
     }

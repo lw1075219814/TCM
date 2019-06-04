@@ -2,8 +2,6 @@ package com.example.tcm.myapplication.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,13 +13,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.tcm.myapplication.R;
-import com.example.tcm.myapplication.entity.Data;
+import com.example.tcm.myapplication.bean.Data;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author liuwen
@@ -40,7 +36,6 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static OnIndexClickListener indexClickListener;
     private final List<String> titles;
     private final List<List<Data>> contents;
-
     private Map<Integer, RecyclerView> childViews = new HashMap();
 
     public Map getChildViews() {

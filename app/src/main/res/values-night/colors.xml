@@ -5,4 +5,8 @@
     <color name="colorAccent">#181921</color>
 
     <color name="fab_bg">#6b6d72</color>
+    <color name="colorBackground">#0F1010</color>
+    <color name="colorCard">#202124</color>
+    <color name="colorText">#6B6D72</color>
+    <color name="comment_reply">#606266</color>
 </resources>

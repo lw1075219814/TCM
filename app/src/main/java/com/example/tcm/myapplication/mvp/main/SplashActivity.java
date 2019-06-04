@@ -1,10 +1,15 @@
 package com.example.tcm.myapplication.mvp.main;
 
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.tcm.myapplication.R;
 import com.example.tcm.myapplication.base.BaseActivity;
 import com.example.tcm.myapplication.util.IntentUtil;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author liuwen
@@ -16,6 +21,14 @@ import com.example.tcm.myapplication.util.IntentUtil;
  * @see
  */
 public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View {
+
+    @BindView(R.id.tv_time)
+    TextView tvTime;
+
+    @OnClick(R.id.rl_time)
+    void onClick(View view) {
+        mPresener.cancelTimer();
+    }
 
     @Override
     protected int setLayoutId() {
@@ -35,6 +48,11 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     public void toMain() {
         IntentUtil.toMain(SplashActivity.this);
+    }
+
+    @Override
+    public void showCountDown(Long count) {
+        tvTime.setText(String.valueOf(count));
     }
 
     @Override

@@ -14,12 +14,17 @@ import com.example.tcm.myapplication.base.BaseView;
  */
 public interface SplashContract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void toMain();
+
+        void showCountDown(Long count);
+
     }
 
-    interface Presenter extends BasePresenter<View>{
+    interface Presenter extends BasePresenter<View> {
         void startTimer();
+
+        void cancelTimer();
     }
 
 }

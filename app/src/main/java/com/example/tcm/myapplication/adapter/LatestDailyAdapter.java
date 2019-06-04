@@ -2,7 +2,6 @@ package com.example.tcm.myapplication.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.tcm.myapplication.R;
-import com.example.tcm.myapplication.entity.LatestDailyListBean;
+import com.example.tcm.myapplication.base.ImageLoader;
+import com.example.tcm.myapplication.bean.LatestDailyListBean;
 import com.example.tcm.myapplication.impl.BaseAdapterListener;
-import com.example.tcm.myapplication.mvp.main2.ZhihuDiffCallback;
 
 import java.util.List;
 
@@ -35,16 +33,16 @@ public class LatestDailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private BaseAdapterListener mListener;
 
     public void setData(List<LatestDailyListBean.TopStoriesBean> beans) {
-        mBeans = beans;
-        notifyDataSetChanged();
+        this.mBeans = beans;
+    }
 
-        //DiffUtil.DiffResult result = DiffUtil.calculateDiff(new ZhihuDiffCallback(mBeans, beans));
-        //result.dispatchUpdatesTo(this);
+    public List<LatestDailyListBean.TopStoriesBean> getData() {
+        return mBeans;
     }
 
     public LatestDailyAdapter(Context context, List<LatestDailyListBean.TopStoriesBean> beans) {
         mContext = context;
-        mBeans = beans;
+        this.mBeans = beans;
         inflater = LayoutInflater.from(context);
     }
 
@@ -58,7 +56,7 @@ public class LatestDailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         ViewHolder childViewHolder = (ViewHolder) viewHolder;
         LatestDailyListBean.TopStoriesBean bean = mBeans.get(i);
-        Glide.with(mContext).load(bean.getImage()).into(childViewHolder.image);
+        ImageLoader.load(mContext, bean.getImage(), childViewHolder.image);
         childViewHolder.text.setText(bean.getTitle());
 
         childViewHolder.childItem.setOnClickListener(new View.OnClickListener() {

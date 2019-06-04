@@ -6,6 +6,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.tcm.myapplication.App;
 
@@ -44,6 +45,12 @@ public abstract class SimpleActivity extends SupportActivity {
             setSupportActionBar(toolBar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowCustomEnabled(true);
+            toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    navigationOnClick(v);
+                }
+            });
         }
     }
 
@@ -53,6 +60,9 @@ public abstract class SimpleActivity extends SupportActivity {
 
     protected void initListener() {
 
+    }
+
+    protected void navigationOnClick(View view) {
     }
 
     @Override

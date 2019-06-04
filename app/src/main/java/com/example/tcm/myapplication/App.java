@@ -11,6 +11,7 @@ import com.example.tcm.myapplication.injection.component.DaggerAppComponent;
 import com.example.tcm.myapplication.injection.module.AppModule;
 import com.example.tcm.myapplication.injection.module.HttpModule;
 import com.example.tcm.myapplication.service.InitService;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +37,15 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+        // Normal app init code...
+
         instance = this;
         getScreenSize();
 

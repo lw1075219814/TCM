@@ -2,11 +2,18 @@ package com.example.tcm.myapplication.injection.module;
 
 import com.example.tcm.myapplication.BuildConfig;
 import com.example.tcm.myapplication.base.Constants;
+import com.example.tcm.myapplication.injection.scope.My;
+import com.example.tcm.myapplication.injection.scope.WeChat;
+import com.example.tcm.myapplication.injection.scope.ZhiHu;
+import com.example.tcm.myapplication.model.http.api.MyApis;
+import com.example.tcm.myapplication.model.http.api.WeChatApis;
 import com.example.tcm.myapplication.model.http.api.ZhiHuApis;
 import com.example.tcm.myapplication.model.http.interceptor.CacheInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -29,26 +36,58 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class HttpModule {
 
+    @Singleton
     @Provides
     Retrofit.Builder provideRetrofitBuilder() {
         return new Retrofit.Builder();
     }
 
+    @Singleton
     @Provides
     OkHttpClient.Builder provideOkHttpBuilder() {
         return new OkHttpClient.Builder();
     }
 
+    @Singleton
     @Provides
-    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        return createRetrofit(builder, client, ZhiHuApis.HOST);
+    @ZhiHu
+    Retrofit provideZhiHuRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, ZhiHuApis.URL);
     }
 
+    @Singleton
     @Provides
-    ZhiHuApis provideService(Retrofit retrofit) {
+    @WeChat
+    Retrofit provideWeChatRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, WeChatApis.URL);
+    }
+
+    @Singleton
+    @Provides
+    @My
+    Retrofit provideMyRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, MyApis.URL);
+    }
+
+    @Singleton
+    @Provides
+    ZhiHuApis provideZhiHuService(@ZhiHu Retrofit retrofit) {
         return retrofit.create(ZhiHuApis.class);
     }
 
+    @Singleton
+    @Provides
+    WeChatApis provideWeChatService(@WeChat Retrofit retrofit) {
+        return retrofit.create(WeChatApis.class);
+    }
+
+    @Singleton
+    @Provides
+    MyApis provideMyService(@My Retrofit retrofit) {
+        return retrofit.create(MyApis.class);
+    }
+
+    @Singleton
     @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder) {
         if (BuildConfig.DEBUG) {
